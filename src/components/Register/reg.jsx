@@ -75,7 +75,7 @@ function Register (){
 
                     </div>
 
-                    <Link to='/dashboard'><button type='submit'>Register</button></Link>
+                    <Link to='/login'><button type='submit'>Register</button></Link>
 
                 </form>
 

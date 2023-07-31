@@ -1,0 +1,145 @@
+.login{
+
+    width:100%;
+}
+
+.login-container{
+
+    width:60%;
+    display:flex;
+    flex-direction:column;
+    /* height:80vh; */
+    justify-content: center;
+    align-items:center;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:50px;
+    
+}
+
+.container-title{
+
+    width:80%;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+.watugot-dot{
+
+    margin-bottom:20px;
+    color:#34BC85;
+    font-size:30px;
+    
+}
+
+.title-watugot{
+
+    font-weight: 600;
+    font-size:24px;
+}
+
+.input-details{
+
+    display:flex;
+    flex-direction: column;
+    margin-top: 50px;
+    gap:25px;
+}
+
+.email .email-input{
+
+    width:291px;
+    height:46px;
+    border-radius:8px;
+    border: 1px solid #EBEBEB;
+    padding:12px;
+
+}
+
+.email .email-input::placeholder{
+
+    font-weight:400;
+    font-size:16px;
+
+}
+
+.pwd .pwd-input{
+
+    width:291px;
+    height:46px;
+    border-radius:8px;
+    border: 1px solid #EBEBEB;
+    padding:12px;
+
+}
+
+.pwd .pwd-input::placeholder{
+
+    font-weight:400;
+    font-size:16px;
+
+}
+
+.pwd .pwd-icon{
+
+    margin-left:-30px;
+    font-size:20px;
+    cursor:pointer;
+    
+}
+
+.forgot{
+
+    text-align: right;
+    font-weight:500;
+    font-size:16px;
+    line-height: 21.6px;
+    cursor: pointer;
+}
+
+
+
+.account{
+
+    margin-top:20px;
+    font-size:16px;
+    font-weight:400;
+}
+
+.sign-up{
+
+    font-weight:700;
+    font-size:16px;
+    cursor: pointer;
+}
+
+.sign-link{
+
+    text-decoration:none;
+    color:black;
+}
+
+@media screen and (max-width:768px){
+
+    .container-title{
+
+        width:100%;
+    }
+
+    .title-watugot{
+
+        font-size:22px;
+    }
+
+    .account{
+
+        font-size:14px;
+    }
+
+    .sign-up{
+
+        font-size:15px;
+    }
+
+}
