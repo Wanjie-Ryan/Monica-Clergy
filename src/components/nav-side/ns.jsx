@@ -124,25 +124,25 @@ function NavSide(){
 
                         <div className="nav-details">
 
-                            <div className="search">
+                            {/* <div className="search">
 
 
                                 <input type='text' placeholder='search anything here'/>
 
                                 <BsSearch className='search-icon'/>
 
+                            </div> */}
+
+                            <div className="bell small-screen">
+
+                                <BiBell className='icon-icon '/>
+
+
                             </div>
 
-                            <div className="bell">
+                            <div className="bell small-screen">
 
-                                <BiBell className='icon-icon'/>
-
-
-                            </div>
-
-                            <div className="bell">
-
-                                <AiOutlineMessage className='icon-icon'/>
+                                <AiOutlineMessage className='icon-icon '/>
 
 
                             </div>
