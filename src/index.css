@@ -1,0 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Delicious+Handrawn&family=Gloria+Hallelujah&family=Inter&family=Lato:ital@1&family=Lexend+Peta:wght@200;300&family=Lugrasimo&family=Mukta:wght@400;500&family=Mulish&family=Noto+Sans:ital,wght@0,400;1,300;1,400&family=Poppins:wght@300;400;500;600&family=Quicksand:wght@500&family=Roboto+Mono:wght@200&family=Rubik&family=Shantell+Sans&family=Tilt+Prism&family=Work+Sans:wght@300&display=swap');
+
+*{
+
+  box-sizing: border-box;
+  padding:0;
+  margin:0;
+  font-family: 'Lugrasimo', cursive;
+  
+}
