@@ -24,7 +24,9 @@ function NavSide(){
 
     const handleSide =()=>{
 
-        setShowSide(!showside)
+        // setShowSide(!showside)
+
+        setShowSide((prevState) => !prevState);
     }
    
 
@@ -36,7 +38,7 @@ function NavSide(){
 
 
 
-                <aside className='aside'>
+                <aside className={`aside ${showside ? 'show-aside' : ''}`}>
 
                     <div className="aside-container">
 
