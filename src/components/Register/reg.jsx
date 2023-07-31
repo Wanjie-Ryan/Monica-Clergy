@@ -1,14 +1,24 @@
-import React from 'react'
+import React, {useState} from 'react'
 import './reg.css'
 import {AiOutlineEye} from 'react-icons/ai'
 import {Link} from 'react-router-dom'
 import view from '../../Assets/homeImages/view 2.jpg'
 import {BsFillPersonFill,BsTelephone} from 'react-icons/bs'
 import {MdEmail} from 'react-icons/md'
-
+import 'react-phone-number-input/style.css';
+import PhoneInput from 'react-phone-number-input';
 
 
 function Register (){
+
+
+    const [contact, setContact] = useState('+254')
+
+    const handleContact =(phoneNumber)=>{
+
+        setContact(phoneNumber)
+    }
+
 
     return(
 
@@ -49,9 +59,9 @@ function Register (){
 
                         <div className='pwd'>
 
-                            <input type='tel' placeholder='Your Phone Number' className='pwd-input' />
+                            <PhoneInput  placeholder='Your Phone Number' className='pwd-input' onChange ={handleContact} value={contact} />
 
-                            <BsTelephone className='pwd-icon'/>
+                            {/* <BsTelephone className='pwd-icon'/> */}
                         </div>
 
                         <div className='pwd'>

@@ -1,3 +1,7 @@
+
+@import '~react-phone-number-input/style.css';
+
+
 .register{
 
     width:100%;
@@ -92,6 +96,30 @@
 }
 
 .pwd .pwd-input::placeholder{
+
+    font-weight:400;
+    font-size:16px;
+
+}
+
+.pwd PhoneInput{
+
+    width:291px;
+    height:46px;
+    border-radius:8px;
+    border: 1px solid #EBEBEB;
+    padding:12px;
+    transition: border-color 0.3s ease-in-out;
+
+}
+
+.pwd PhoneInput:focus{
+
+    outline: none;
+    border-color: #693d56;
+}
+
+.pwd PhoneInput::placeholder{
 
     font-weight:400;
     font-size:16px;
