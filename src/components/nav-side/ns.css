@@ -1,0 +1,181 @@
+#main{
+
+    width:100%;
+    display:flex;
+    flex-direction: row;
+}
+
+.aside{
+
+    width:20%;
+    border-right: 1px solid rgba(159, 165, 180, 1);
+    margin-bottom:10px;
+}
+
+.aside-container{
+
+    display:flex;
+    flex-direction: column;
+    margin-left:27px;
+    justify-content: center;
+    margin-top:30px;
+}
+
+.dash{
+
+    display:flex;
+    flex-direction:row;
+    margin-top: 20px;
+    background-color:rgba(52, 188, 133, 0.1);
+    width:150px;
+    padding:12px;
+    cursor:pointer;
+    border-radius: 5px;
+    border: 0px, 1px, 0px, 0px;
+}
+
+.dash-icon{
+
+    margin-right:7px;
+    color:#34BC85;
+}
+
+.dash-p{
+
+    color:rgba(52, 188, 133, 1);
+
+}
+
+.others-aside{
+
+    display:flex;
+    flex-direction:row;
+    margin-top: 40px;
+    cursor:pointer;
+
+}
+
+.others-icon{
+    margin-right:7px;
+    color:rgba(159, 165, 180, 1);
+}
+
+.others-p{
+
+    color:rgba(159, 165, 180, 1);
+    font-size:16px;
+}
+
+.aside-profile{
+
+    margin-top: 40px;
+    display:flex;
+    flex-direction: row;
+    gap:10px;
+
+}
+
+.user-details .username{
+
+    font-weight:bold;
+    font-size:14px;
+    cursor:pointer;
+}
+
+.user-details .useremail{
+
+    color:rgba(0, 0, 0, 0.5);
+    font-size: 12px;
+    margin-top: 5px;
+    cursor:pointer;
+
+}
+
+
+
+.nav{
+
+    width:80%;
+    
+}
+
+.main-nav{
+
+    width:100%;
+    display:flex;
+    flex-direction: row;
+    /* margin-left:auto; */
+    /* margin-right:auto; */
+    /* justify-content: space-around; */
+    gap:20rem;
+    margin-top:10px;
+    /* background-color:purple; */
+}
+
+.menu-toggle{
+
+    margin-left:150px;
+}
+
+.menu{
+
+    font-size:20px;
+    cursor: pointer;
+}
+
+.nav-details{
+
+    display:flex;
+    flex-direction: row;
+    gap:3rem;
+}
+
+.search input{
+
+    width:287px;
+    height:48px;
+    border-radius: 8px;
+    padding: 12px;
+    border: 1px solid #EBEBEB;
+
+}
+
+.search input::placeholder{
+
+    font-size:16px;
+}
+
+.search .search-icon{
+
+    margin-left:-30px;
+    cursor: pointer;
+}
+
+.bell{
+
+    background-color: #F8F9FC;
+    width:30px;
+    height:27px;
+    border-radius: 10px;
+    padding:5px;
+}
+
+.icon-icon{
+
+    cursor: pointer;
+    font-size:21px;
+}
+
+.avatar{
+
+    width:80px;
+    height:50px;
+    
+}
+
+.avatar-img{
+
+    width:40px;
+    height:35px;
+    cursor: pointer;
+}
