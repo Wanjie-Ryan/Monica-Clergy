@@ -14,8 +14,8 @@ import {RiSettingsLine} from 'react-icons/ri'
 import {LiaKeySolid,LiaMoneyBillSolid} from 'react-icons/lia'
 import view from '../../Assets/homeImages/view 2.jpg'
 import {GrProjects} from 'react-icons/gr'
-
-
+import {Link} from 'react-router-dom'
+import {FiLogOut} from 'react-icons/fi'
 
 function NavSide(){
 
@@ -57,7 +57,7 @@ function NavSide(){
                             <div className='dash'>
 
                                 <GrProjects className='dash-icon'/>
-                                <p className='dash-p'>Projects</p>
+                                <Link to ='/projects' className='link-side'><p className='dash-p'>Projects</p></Link>
 
 
                             </div>
@@ -65,7 +65,7 @@ function NavSide(){
                             <div className='others-aside'>
 
                                 <CgEventbrite className='others-icon'/>
-                                <p className='others-p'>Events</p>
+                                <Link to ='/events' className='link-side'><p className='others-p'>Events</p></Link>
 
                             </div>
 
@@ -73,14 +73,21 @@ function NavSide(){
                             <div className='others-aside'>
 
                                 <CgNotes className='others-icon'/>
-                                <p className='others-p'>Announcements</p>
+                                <Link to ='/announce' className='link-side'><p className='others-p'>Announcements</p></Link>
 
                             </div>
 
                             <div className='others-aside'>
 
                                 <CgNotes className='others-icon'/>
-                                <p className='others-p'>Feedbacks</p>
+                                <Link to ='/feedback' className='link-side'><p className='others-p'>Feedbacks</p></Link>
+
+                            </div>
+
+                            <div className='others-aside'>
+
+                                <FiLogOut className='others-icon'/>
+                                <p className='others-p'>Logout</p>
 
                             </div>
                             
@@ -92,7 +99,7 @@ function NavSide(){
 
                             <div className="aside-avatar">
 
-                             <img src={Avatar} alt='' className='avatar-img'/>
+                             <Link to='/profile'><img src={Avatar} alt='' className='avatar-img'/></Link>
 
                             </div>
 
@@ -137,21 +144,21 @@ function NavSide(){
 
                             <div className="bell small-screen">
 
-                                <BiBell className='icon-icon '/>
+                                <Link to ='/feedback' className='link-icon'><BiBell className='icon-icon '/></Link>
 
 
                             </div>
 
                             <div className="bell small-screen">
 
-                                <AiOutlineMessage className='icon-icon '/>
+                                <Link to='/announce' className='link-icon'><AiOutlineMessage className='icon-icon '/></Link>
 
 
                             </div>
 
                             <div className="avatar">
 
-                                <img src={Avatar} alt='' className='avatar-img'/>
+                                <Link to ='/profile'><img src={Avatar} alt='' className='avatar-img'/></Link>
 
 
                             </div>
