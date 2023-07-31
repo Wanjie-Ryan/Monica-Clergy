@@ -1,7 +1,7 @@
-import React from 'react'
+import React, {useState} from 'react'
 import './ns.css'
 import {RiMenu5Fill} from 'react-icons/ri'
-import {AiOutlineEye,AiOutlineMessage} from 'react-icons/ai'
+import {AiOutlineEye,AiOutlineMessage,AiOutlineClose} from 'react-icons/ai'
 import Avatar from '../../Assets/DefaultAvatar.png'
 import {BiBell,BiStore,BiCategory,BiCopy} from 'react-icons/bi'
 import {BsSearch,BsFileBarGraph} from 'react-icons/bs'
@@ -9,15 +9,24 @@ import {GoHome} from 'react-icons/go'
 import {FcApproval} from 'react-icons/fc'
 import {HiOutlineUsers} from 'react-icons/hi'
 import {PiFlagPennant} from 'react-icons/pi'
-import {CgNotes} from 'react-icons/cg'
+import {CgNotes,CgEventbrite} from 'react-icons/cg'
 import {RiSettingsLine} from 'react-icons/ri'
 import {LiaKeySolid,LiaMoneyBillSolid} from 'react-icons/lia'
 import view from '../../Assets/homeImages/view 2.jpg'
-
+import {GrProjects} from 'react-icons/gr'
 
 
 
 function NavSide(){
+
+
+    const [showside, setShowSide] = useState(false)
+
+    const handleSide =()=>{
+
+        setShowSide(!showside)
+    }
+   
 
     return(
 
@@ -35,6 +44,7 @@ function NavSide(){
 
                             
                             <img src={view} alt="view" className='view'/>
+                            <AiOutlineClose className='close' onClick={handleSide}/>
 
                             
                         </div>
@@ -44,110 +54,33 @@ function NavSide(){
 
                             <div className='dash'>
 
-                                <GoHome className='dash-icon'/>
-                                <p className='dash-p'>Dashboard</p>
+                                <GrProjects className='dash-icon'/>
+                                <p className='dash-p'>Projects</p>
 
 
                             </div>
 
                             <div className='others-aside'>
 
-                                <FcApproval className='others-icon'/>
-                                <p className='others-p'>Approval</p>
+                                <CgEventbrite className='others-icon'/>
+                                <p className='others-p'>Events</p>
 
                             </div>
 
-                            <div className='others-aside'>
-
-                                <HiOutlineUsers className='others-icon'/>
-                                <p className='others-p'>Users</p>
-
-                            </div>
 
                             <div className='others-aside'>
 
-                                <BiStore className='others-icon'/>
-                                <p className='others-p'>Stores</p>
-
-                            </div>
-
-                            <div className='others-aside'>
-
-                                <HiOutlineUsers className='others-icon'/>
-                                <p className='others-p'>Watizens</p>
-
-                            </div>
-
-                            <div className='others-aside'>
-
-                                <BiCategory className='others-icon'/>
-                                <p className='others-p'>Categories</p>
-
-                            </div>
-
-                            <div className='others-aside'>
-
-                                <BsFileBarGraph className='others-icon'/>
-                                <p className='others-p'>Piactivity</p>
-
-                            </div>
-
-                            <div className='others-aside'>
-
-                                <PiFlagPennant className='others-icon'/>
-                                <p className='others-p'>Flagged</p>
+                                <CgNotes className='others-icon'/>
+                                <p className='others-p'>Announcements</p>
 
                             </div>
 
                             <div className='others-aside'>
 
                                 <CgNotes className='others-icon'/>
-                                <p className='others-p'>Notification</p>
+                                <p className='others-p'>Feedbacks</p>
 
                             </div>
-
-                            <div className='others-aside'>
-
-                                <CgNotes className='others-icon'/>
-                                <p className='others-p'>Messages</p>
-
-                            </div>
-
-                            <div className='others-aside'>
-
-                                <BiCopy className='others-icon'/>
-                                <p className='others-p'>Featured</p>
-
-                            </div>
-
-                            <div className='others-aside'>
-
-                                <RiSettingsLine className='others-icon'/>
-                                <p className='others-p'>Settings</p>
-
-                            </div>
-
-                            <div className='others-aside'>
-
-                                <LiaKeySolid className='others-icon'/>
-                                <p className='others-p'>Permissions</p>
-
-                            </div>
-
-                            <div className='others-aside'>
-
-                                <LiaMoneyBillSolid className='others-icon'/>
-                                <p className='others-p'>Bills & Payments</p>
-
-                            </div>
-
-                            <div className='others-aside'>
-
-                                <CgNotes className='others-icon'/>
-                                <p className='others-p'>Reports</p>
-
-                            </div>
-
                             
 
 
@@ -179,13 +112,13 @@ function NavSide(){
                 </aside>
 
 
-                <nav className='nav'>
+                <nav className='nav' >
 
                     <div className="main-nav">
 
                         <div className="menu-toggle">
 
-                            <RiMenu5Fill className='menu'/>
+                            <RiMenu5Fill className='menu' onClick ={handleSide} />
 
                         </div>
 

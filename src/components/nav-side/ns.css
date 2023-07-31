@@ -10,6 +10,7 @@
     width:20%;
     border-right: 1px solid rgba(159, 165, 180, 1);
     margin-bottom:10px;
+    height:100vh;
 }
 
 .aside-container{
@@ -19,6 +20,7 @@
     margin-left:27px;
     justify-content: center;
     margin-top:30px;
+    /* gap:10rem; */
 }
 
 .dash{
@@ -47,6 +49,19 @@
     
 
 }
+
+.close{
+
+    float:right;
+    cursor: pointer;
+    font-size:20px;
+    display:none;
+    transition: transform 0.3s ease-in-out 0.3ms;
+}
+
+.close:hover {
+    transform: rotate(360deg);
+  }
 
 .others-aside{
 
@@ -96,9 +111,12 @@
 
 
 
+
+
 .nav{
 
     width:80%;
+    height:2cm;
     
 }
 
@@ -182,3 +200,28 @@
     height:35px;
     cursor: pointer;
 }
+
+@media screen and (max-width:768px){
+
+    .aside{
+
+        background-color: red;
+        width:150px;
+    }
+
+    .aside-container{
+
+        margin-left:0;
+    }
+
+    .nav{
+
+        
+        display: none;
+    }
+
+    
+
+}
+
+
