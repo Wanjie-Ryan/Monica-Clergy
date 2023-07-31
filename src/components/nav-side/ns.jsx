@@ -5,7 +5,6 @@ import {AiOutlineEye,AiOutlineMessage} from 'react-icons/ai'
 import Avatar from '../../Assets/DefaultAvatar.png'
 import {BiBell,BiStore,BiCategory,BiCopy} from 'react-icons/bi'
 import {BsSearch,BsFileBarGraph} from 'react-icons/bs'
-// import watu from '../../assets/Watugot.png'
 import {GoHome} from 'react-icons/go'
 import {FcApproval} from 'react-icons/fc'
 import {HiOutlineUsers} from 'react-icons/hi'
@@ -13,6 +12,7 @@ import {PiFlagPennant} from 'react-icons/pi'
 import {CgNotes} from 'react-icons/cg'
 import {RiSettingsLine} from 'react-icons/ri'
 import {LiaKeySolid,LiaMoneyBillSolid} from 'react-icons/lia'
+import view from '../../Assets/homeImages/view 2.jpg'
 
 
 
@@ -33,7 +33,9 @@ function NavSide(){
 
                         <div className="aside-img">
 
-                            {/* <img src ={watu} alt= 'watugot' className='aside-logo'/> */}
+                            
+                            <img src={view} alt="view" className='view'/>
+
                             
                         </div>
 
