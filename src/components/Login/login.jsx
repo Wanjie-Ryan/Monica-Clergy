@@ -48,7 +48,7 @@ function Login (){
 
                             </div>
 
-                            <Link to='/dashboard'><button type='submit'>Sign In</button></Link>
+                            <Link to='/project'><button type='submit'>Sign In</button></Link>
 
                         </form>
 

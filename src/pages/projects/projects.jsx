@@ -1,19 +1,19 @@
 import React from 'react'
-// import Dash from '../../components/dashboard/dash'
 import Nav from '../../components/nav-side/ns'
+import Project from '../../components/projects/projects'
 
 
-function DashPage (){
+function ProjectsPage (){
     
     return(
 
         <>
 
-            {/* <Dash/> */}
             <Nav/>
+            <Project/>
 
         </>
     )
 }
 
-export default DashPage
+export default ProjectsPage

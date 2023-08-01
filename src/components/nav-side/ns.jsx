@@ -1,167 +1,112 @@
 import React, {useState} from 'react'
 import './ns.css'
-import {RiMenu5Fill} from 'react-icons/ri'
-import {AiOutlineEye,AiOutlineMessage,AiOutlineClose} from 'react-icons/ai'
-import Avatar from '../../Assets/DefaultAvatar.png'
-import {BiBell,BiStore,BiCategory,BiCopy} from 'react-icons/bi'
-import {BsSearch,BsFileBarGraph} from 'react-icons/bs'
-import {GoHome} from 'react-icons/go'
-import {FcApproval} from 'react-icons/fc'
-import {HiOutlineUsers} from 'react-icons/hi'
-import {PiFlagPennant} from 'react-icons/pi'
-import {CgNotes,CgEventbrite} from 'react-icons/cg'
-import {RiSettingsLine} from 'react-icons/ri'
-import {LiaKeySolid,LiaMoneyBillSolid} from 'react-icons/lia'
-import view from '../../Assets/homeImages/view 2.jpg'
-import {GrProjects} from 'react-icons/gr'
 import {Link} from 'react-router-dom'
+import SiteLogo from '../../Assets/favicon.jpg'
+import {BiHome, BiSolidContact,BiMenu} from 'react-icons/bi'
+import {FcGallery} from 'react-icons/fc'
+import {MdOutlineRememberMe} from 'react-icons/md'
+import {CgProfile} from 'react-icons/cg'
+import {AiFillCloseCircle} from 'react-icons/ai'
+import Favi from '../../Assets/DefaultAvatar.png'
+import {GoHome} from 'react-icons/go'
+import {CgNotes,CgEventbrite} from 'react-icons/cg'
+import {GrProjects} from 'react-icons/gr'
 import {FiLogOut} from 'react-icons/fi'
 
-function NavSide(){
+function Navbar() {
 
+    const [showNav, setshowNav] = useState(false)
 
-    const [showside, setShowSide] = useState(false)
+    const handleNav = ()=>{
 
-    const handleSide =()=>{
-
-        // setShowSide(!showside)
-
-        setShowSide((prevState) => !prevState);
+        setshowNav(!showNav)
     }
+
+        
+        
+
+  return (
+
+
+    <>
+
+        <nav className ='nav-main'>
+
+            <div className="inner-nav">
+
+                <div className="site-logo">
+
+                    <div className="flip-box img-logo">
+
+                        <div className="flip-box-inner">
+
+                            <div className="flip-box-front">
+
+                                <img className="logo" src={SiteLogo} alt="logo" />
+
+                            </div> 
+
+                            <div className="flip-box-back">
    
+                                <p>Be Equipped For Ministry </p>
+                                
+                            </div> 
 
-    return(
-
-        <>
-
-            <main id='main'>
-
-
-
-                <aside className={`aside ${showside ? 'show-aside' : ''}`}>
-
-                    <div className="aside-container">
-
-                        <div className="aside-img">
-
-                            
-                            <img src={view} alt="view" className='view'/>
-                            <AiOutlineClose className='close' onClick={handleSide}/>
-
-                            
                         </div>
 
+                    </div>
+
+
+
+                </div>
+
+
+
+                <div className="nav-details">
+
+                    <div className="nav-links">
+
+                        <div className='nav-links-inner remove'>
+
+                            <Link to='/project' className='nav-p'><p className='nav-p'>Projects</p></Link>
+
+
+                        </div>
+
+                        <div className='nav-links-inner remove'>
+
+                            <Link to='/events' className='nav-p'><p className='nav-p'>Events</p></Link>
+
+
+                        </div>
+
+                        <div className='announce remove'>
+
+                            <Link to='/announce' className='nav-p'><p className='nav-p'>Announcements</p></Link>
+
+
+                        </div>
+
+                        <div className='nav-links-inner remove'>
+
+                            <Link to='/feedback' className='nav-p'><p className='nav-p'>Feedbacks</p></Link>
+
+
+                        </div>
+
+                            <BiMenu className='icon-menu' onClick ={handleNav}/>
                         
-                        <div className="aside-details">
 
-                            <div className='dash'>
+                        <div className='announce-profile'>
 
-                                <GrProjects className='dash-icon'/>
-                                <Link to ='/projects' className='link-side'><p className='dash-p'>Projects</p></Link>
+                            <Link to='/profile' className='nav-p'>
 
-
-                            </div>
-
-                            <div className='others-aside'>
-
-                                <CgEventbrite className='others-icon'/>
-                                <Link to ='/events' className='link-side'><p className='others-p'>Events</p></Link>
-
-                            </div>
+                                <img src ={Favi} alt='img' className="logo" />
+                                <p className='profile-name'>Hello, John Mureithi</p>
 
 
-                            <div className='others-aside'>
+                            </Link>
 
-                                <CgNotes className='others-icon'/>
-                                <Link to ='/announce' className='link-side'><p className='others-p'>Announcements</p></Link>
-
-                            </div>
-
-                            <div className='others-aside'>
-
-                                <CgNotes className='others-icon'/>
-                                <Link to ='/feedback' className='link-side'><p className='others-p'>Feedbacks</p></Link>
-
-                            </div>
-
-                            <div className='others-aside'>
-
-                                <FiLogOut className='others-icon'/>
-                                <p className='others-p'>Logout</p>
-
-                            </div>
-                            
-
-
-                        </div>
-
-                        <div className="aside-profile">
-
-                            <div className="aside-avatar">
-
-                             <Link to='/profile'><img src={Avatar} alt='' className='avatar-img'/></Link>
-
-                            </div>
-
-                            <div className="user-details">
-
-                                <p className='username'>Ryan Wanjie</p>
-                                <p className='useremail'>ryan@gmail.com</p>
-
-                            </div>
-
-
-                        </div>
-
-                    </div>
-
-
-
-
-                </aside>
-
-
-                <nav className='nav' >
-
-                    <div className="main-nav">
-
-                        <div className="menu-toggle">
-
-                            <RiMenu5Fill className='menu' onClick ={handleSide} />
-
-                        </div>
-
-                        <div className="nav-details">
-
-                            {/* <div className="search">
-
-
-                                <input type='text' placeholder='search anything here'/>
-
-                                <BsSearch className='search-icon'/>
-
-                            </div> */}
-
-                            <div className="bell small-screen">
-
-                                <Link to ='/feedback' className='link-icon'><BiBell className='icon-icon '/></Link>
-
-
-                            </div>
-
-                            <div className="bell small-screen">
-
-                                <Link to='/announce' className='link-icon'><AiOutlineMessage className='icon-icon '/></Link>
-
-
-                            </div>
-
-                            <div className="avatar">
-
-                                <Link to ='/profile'><img src={Avatar} alt='' className='avatar-img'/></Link>
-
-
-                            </div>
 
                         </div>
 
@@ -169,20 +114,130 @@ function NavSide(){
 
 
                     </div>
-                    
+
+                </div>
+
+            </div>
+
+        </nav>
+
+        { showNav && (
+        <aside className='side'>
+
+            <div className="close-btn">
+
+                <AiFillCloseCircle
+
+                 className="close"
+                 onClick ={handleNav}
+                
+                />
+
+            </div>
+
+            <div className="main-side">
+
+                <div className="site-logo side-logo">
+
+                    <div className="flip-box img-logo">
+
+                        <div className="flip-box-inner">
+
+                            <div className="flip-box-front">
+
+                                <img className="logo" src={SiteLogo} alt="logo" />
+
+                            </div> 
+
+                            <div className="flip-box-back">
+
+                                <p>Be Equipped For Ministry </p>
+                                
+                            </div> 
+
+                        </div>
+
+                    </div>
+
+                </div>
 
 
+                <div className="side-details">
+
+                    <div className="aside-details">
+
+                        <div className='dash'>
+
+                            <GrProjects className='dash-icon'/>
+                            <Link to ='/projects' className='link-side' onClick ={handleNav}><p className='dash-p'>Projects</p></Link>
+
+                        </div>
+
+                        <div className='others-aside'>
+
+                            <CgEventbrite className='others-icon'/>
+                            <Link to ='/events' className='link-side' onClick ={handleNav}><p className='others-p'>Events</p></Link>
+
+                        </div>
 
 
-                </nav>
+                        <div className='others-aside'>
 
-            </main>
+                            <CgNotes className='others-icon'/>
+                            <Link to ='/announce' className='link-side' onClick ={handleNav}><p className='others-p'>Announcements</p></Link>
 
+                        </div>
+
+                        <div className='others-aside'>
+
+                            <CgNotes className='others-icon'/>
+                            <Link to ='/feedback' className='link-side' onClick ={handleNav}><p className='others-p'>Feedbacks</p></Link>
+
+                        </div>
+
+                        <div className='others-aside'>
+
+                            <FiLogOut className='others-icon'/>
+                            <p className='others-p' onClick ={handleNav}>Logout</p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div className="aside-profile">
+
+                        <div className="aside-avatar">
+
+                            <Link to='/profile' onClick ={handleNav}><img src={Favi} alt='' /></Link>
+
+                        </div>
+
+                        <div className="user-details">
+
+                            <p className='username'>Ryan Wanjie</p>
+                            <p className='useremail'>ryan@gmail.com</p>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+   
+            </div>
+
+        </aside>
         
-        
-        
-        </>
-    )
+        )}
+
+
+    
+    
+    </>
+
+
+  )
 }
 
-export default NavSide
+export default Navbar
