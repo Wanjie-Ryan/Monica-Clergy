@@ -169,7 +169,7 @@ function Navbar() {
                         <div className='dash'>
 
                             <GrProjects className='dash-icon'/>
-                            <Link to ='/projects' className='link-side' onClick ={handleNav}><p className='dash-p'>Projects</p></Link>
+                            <Link to ='/project' className='link-side' onClick ={handleNav}><p className='dash-p'>Projects</p></Link>
 
                         </div>
 
