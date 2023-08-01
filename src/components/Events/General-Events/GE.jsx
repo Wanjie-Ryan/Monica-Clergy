@@ -32,7 +32,7 @@ function GeneralEvents (){
                 <p className='gen-title'>General Events</p>
                 {/* <p className='event-desc'>These are events that involve the whole of the church</p> */}
 
-                <div className="search-add">
+                    <div className="search-add">
 
                         <div className="search">
 

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 // import '../projects.css'
 
-function CreateProjectModal({ isOpen, onClose }) {
+function UpdateProjectModal({ isOpen, onClose }) {
 
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
@@ -37,7 +37,7 @@ function CreateProjectModal({ isOpen, onClose }) {
 
       <div className="modal-content">
 
-        <h2>Create General Event</h2>
+        <h2>Update Mens' Event</h2>
 
         <div className="modal-input">
 
@@ -67,36 +67,6 @@ function CreateProjectModal({ isOpen, onClose }) {
 
         <div className="modal-input">
 
-          <label htmlFor="title">Actual Date for Event:</label>
-
-          <input
-            type="date"
-            id="title"
-            value={title}
-            onChange={handleTitleChange}
-            placeholder="Enter project title"
-          />
-
-        </div>
-
-        <div className="modal-input">
-
-          <label htmlFor="title">Registration Deadline for Event:</label>
-
-          <input
-            type="date"
-            id="title"
-            value={title}
-            onChange={handleTitleChange}
-            placeholder="Enter project title"
-          />
-
-        </div>
-
-        
-
-        <div className="modal-input">
-
           <label htmlFor="description">Description:</label>
           <textarea
             id="description"
@@ -116,4 +86,4 @@ function CreateProjectModal({ isOpen, onClose }) {
   );
 }
 
-export default CreateProjectModal;
+export default UpdateProjectModal;
