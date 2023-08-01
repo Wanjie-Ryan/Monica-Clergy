@@ -7,7 +7,7 @@ import {BsFillPersonFill,BsTelephone} from 'react-icons/bs'
 import {MdEmail} from 'react-icons/md'
 import 'react-phone-number-input/style.css';
 import PhoneInput from 'react-phone-number-input';
-
+import {CgProfile} from 'react-icons/cg'
 
 function Register (){
 
@@ -45,6 +45,20 @@ function Register (){
                             <input type='text' placeholder='Enter Your Name' className='pwd-input' />
 
                             <BsFillPersonFill className='pwd-icon'/>
+
+                        </div>
+
+                        <div className="pwd">
+
+                            <input
+                                type="file"
+                                id="imageFile"
+                                accept="image/*"
+                                className='pwd-input'
+                                // onChange={handleImageChange}
+                            />
+                            
+                            <CgProfile className='pwd-icon'/>
 
                         </div>
 
