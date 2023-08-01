@@ -2,6 +2,10 @@ import React, {useState} from 'react'
 // import './SingleKids.css'
 import generalEvents from '../../../Assets/Events/general_events.jpg'
 // import EventsRegModal from '../Events-Modal/Event-Reg-Modal'
+import {RiDeleteBin7Fill} from 'react-icons/ri'
+import {BsPencil} from 'react-icons/bs'
+import UpdateLadiesModal from '../Ladies-Events/updateProject-Modal/updateProject'
+
 
 
 
@@ -40,7 +44,15 @@ function SingleLadies (){
                     <p className='events-title-single'>Events Title:</p>
                     <p className='events-title-single'>Events Description:</p>
 
-                    <button className='event-reg-btn' onClick={openEventModal}>Register for Event</button>
+
+                    <div className="up-del-single">
+                                
+                        <BsPencil className='up-icon' title='update' onClick ={openEventModal} />
+                        <RiDeleteBin7Fill className='up-icon' title='delete'/>
+        
+        
+                    </div>
+
 
 
                 </div>
@@ -49,15 +61,12 @@ function SingleLadies (){
             </section>
 
 
-            {/* <EventsRegModal
+            <UpdateLadiesModal
 
                 isOpen={EventModalOpen}
                 onClose={closeEventModal}
                 
-
             />
-         */}
-        
         
         </>
 
