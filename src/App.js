@@ -3,6 +3,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import RegComponent from './pages/Register/reg'
 import LoginComponent from './pages/Login/login'
 import ProjectComponent from './pages/projects/projects'
+import EventComponent from './pages/Events/events'
+
 
 
 
@@ -19,6 +21,8 @@ function App (){
           <Route path= '/' element ={<RegComponent/>}/>
           <Route path= '/login' element ={<LoginComponent/>}/>
           <Route path= '/project' element ={<ProjectComponent/>}/>
+          <Route path= '/events' element ={<EventComponent/>}/>
+
 
         </Routes>
 
