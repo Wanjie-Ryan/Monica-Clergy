@@ -1,5 +1,6 @@
 import React from 'react'
-
+import {Link} from 'react-router-dom'
+import churchview from '../../Assets/homeImages/church_view.jpg'
 
 
 
@@ -11,7 +12,7 @@ function Events (){
 
         <>
 
-            <h2>dhd</h2>
+           
 
         </>
     )
