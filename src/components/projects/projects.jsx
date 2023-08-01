@@ -1,14 +1,34 @@
-import React from 'react'
+import React, {useState} from 'react'
 import './projects.css'
 import {BsSearch,BsPencil} from 'react-icons/bs'
 import {BiAddToQueue} from 'react-icons/bi'
 import {Link} from 'react-router-dom'
 import churchview from '../../Assets/homeImages/church_view.jpg'
 import {RiDeleteBin7Fill} from 'react-icons/ri'
-
+import CreateProjectModal from '../projects/createProject-Modal/createproject'
+import UpdateProjectModal from '../projects/updateProject-Modal/updateProject'
 
 function Projects (){
 
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const openModal = () => {
+        setIsModalOpen(true);
+    };
+
+    const closeModal = () => {
+        setIsModalOpen(false);
+    };
+
+    const [updateModalOpen, setupdateModalOpen] = useState(false);
+
+    const UpdateopenModal = () => {
+        setupdateModalOpen(true);
+    };
+
+    const UpdatecloseModal = () => {
+        setupdateModalOpen(false);
+    };
 
     return(
 
@@ -29,10 +49,10 @@ function Projects (){
 
                         </div>
 
-                        <div className="add">
+                        <div className="add" onClick={openModal}>
 
                             <p className='add-p'>Create Project</p>
-                            <BiAddToQueue className='add-icon'/>
+                            <BiAddToQueue className='add-icon' />
 
 
                         </div>
@@ -53,7 +73,7 @@ function Projects (){
 
                             <div className="up-del">
                                 
-                                <BsPencil className='up-icon' title='update'/>
+                                <BsPencil className='up-icon' title='update' onClick={UpdateopenModal}/>
                                 <RiDeleteBin7Fill className='up-icon' title='delete'/>
 
                             </div>
@@ -96,6 +116,8 @@ function Projects (){
             </section>
         
         
+            <CreateProjectModal isOpen={isModalOpen} onClose={closeModal} />
+            <UpdateProjectModal isOpen ={updateModalOpen} onClose ={UpdatecloseModal}/>
         
         
         </>
