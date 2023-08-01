@@ -64,6 +64,20 @@ function Projects (){
 
                             <img src ={churchview} alt='church' className='img-proj'/>
 
+                            <div className="img-text">
+
+                                <p className='project-desc'>Building a complex for the Youth</p>
+
+                            </div>
+
+                            <div className="up-del">
+                                
+                                <BsPencil className='up-icon' title='update'/>
+                                <RiDeleteBin7Fill className='up-icon' title='delete'/>
+
+                            </div>
+
+
                         </div>
 
                         
