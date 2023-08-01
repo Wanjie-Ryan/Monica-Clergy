@@ -1,7 +1,7 @@
 import React from 'react'
-import Navbar from '../../../Components/navbar/nav'
-import LadiesEvents from '../../../Components/Events/Ladies-Events/Ladies'
-import Footer from '../../../Components/footer/footer'
+import Navbar from '../../../components/nav-side/ns'
+import LadiesEvents from '../../../components/Events/Ladies-Events/Ladies'
+
 
 function LadiesPages() {
 
@@ -13,7 +13,7 @@ function LadiesPages() {
 
         <Navbar/>
         <LadiesEvents/>
-        <Footer/>
+       
 
     
     

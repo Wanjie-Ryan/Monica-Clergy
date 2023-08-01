@@ -1,7 +1,6 @@
 import React from 'react'
-import Navbar from '../../../Components/navbar/nav'
-import SingleLadies from '../../../Components/Events/Ladies-Events/SingleLadies'
-import Footer from '../../../Components/footer/footer'
+import Navbar from '../../../components/nav-side/ns'
+import SingleLadies from '../../../components/Events/Ladies-Events/SingleLadies'
 
 function SingleLadiesPages() {
 
@@ -13,7 +12,7 @@ function SingleLadiesPages() {
 
         <Navbar/>
         <SingleLadies/>
-        <Footer/>
+       
 
     
     

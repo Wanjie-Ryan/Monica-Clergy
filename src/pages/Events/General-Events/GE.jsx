@@ -1,7 +1,9 @@
 import React from 'react'
-import Navbar from '../../../Components/navbar/nav'
-import GeneralEvents from '../../../Components/Events/General-Events/GE'
-import Footer from '../../../Components/footer/footer'
+import Navbar from '../../../components/nav-side/ns'
+import GeneralEvents from '../../../components/Events/General-Events/GE'
+
+
+
 
 function GEPages() {
 
@@ -13,7 +15,7 @@ function GEPages() {
 
         <Navbar/>
         <GeneralEvents/>
-        <Footer/>
+       
 
     
     

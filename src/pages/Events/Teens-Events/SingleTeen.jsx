@@ -1,7 +1,7 @@
 import React from 'react'
-import Navbar from '../../../Components/navbar/nav'
-import Singleteens from '../../../Components/Events/Teens-Events/SingleTeen'
-import Footer from '../../../Components/footer/footer'
+import Navbar from '../../../components/nav-side/ns'
+import Singleteens from '../../../components/Events/Teens-Events/SingleTeen'
+
 
 function SingleTeenPages() {
 
@@ -13,7 +13,7 @@ function SingleTeenPages() {
 
         <Navbar/>
         <Singleteens/>
-        <Footer/>
+        
 
     
     

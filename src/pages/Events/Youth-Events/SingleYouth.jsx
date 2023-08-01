@@ -1,7 +1,7 @@
 import React from 'react'
-import Navbar from '../../../Components/navbar/nav'
-import SingleYouths from '../../../Components/Events/Youth-Events/SingleYouth'
-import Footer from '../../../Components/footer/footer'
+import Navbar from '../../../components/nav-side/ns'
+import SingleYouths from '../../../components/Events/Youth-Events/SingleYouth'
+
 
 function SingleYouthPages() {
 
@@ -13,7 +13,7 @@ function SingleYouthPages() {
 
         <Navbar/>
         <SingleYouths/>
-        <Footer/>
+       
 
     
     

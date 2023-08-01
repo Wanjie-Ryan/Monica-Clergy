@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 // import './SingleKids.css'
 import generalEvents from '../../../Assets/Events/general_events.jpg'
-import EventsRegModal from '../Events-Modal/Event-Reg-Modal'
+// import EventsRegModal from '../Events-Modal/Event-Reg-Modal'
 
 
 
@@ -49,22 +49,14 @@ function SingleLadies (){
             </section>
 
 
-            <EventsRegModal
+            {/* <EventsRegModal
 
                 isOpen={EventModalOpen}
                 onClose={closeEventModal}
-                // onUpdate={handleUpdateSubmit}
-                // name={votername}
-                // name={contact}
-
-                // onChange={(e) => {
-                // const { name, value } = e.target;
-                // if (name === 'namesvoter') setvotername(value);
-                // if (name === 'contact') setcontact(value);
-                // }}
+                
 
             />
-        
+         */}
         
         
         </>

@@ -1,7 +1,6 @@
 import React from 'react'
-import Navbar from '../../../Components/navbar/nav'
-import TeensEvents from '../../../Components/Events/Teens-Events/Teens'
-import Footer from '../../../Components/footer/footer'
+import Navbar from '../../../components/nav-side/ns'
+import TeensEvents from '../../../components/Events/Teens-Events/Teens'
 
 function GEPages() {
 
@@ -13,7 +12,7 @@ function GEPages() {
 
         <Navbar/>
         <TeensEvents/>
-        <Footer/>
+        
 
     
     

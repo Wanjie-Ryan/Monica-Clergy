@@ -1,7 +1,7 @@
 import React from 'react'
-import Navbar from '../../../Components/navbar/nav'
-import SingleMenImport from '../../../Components/Events/Men-Events/singleMenEvents'
-import Footer from '../../../Components/footer/footer'
+import Navbar from '../../../components/nav-side/ns'
+import SingleMenImport from '../../../components/Events/Men-Events/singleMenEvents'
+
 
 function SinglemenPages() {
 
@@ -13,7 +13,7 @@ function SinglemenPages() {
 
         <Navbar/>
         <SingleMenImport/>
-        <Footer/>
+        
 
     
     

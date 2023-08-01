@@ -1,7 +1,7 @@
 import React from 'react'
-import Navbar from '../../../Components/navbar/nav'
-import MenEvents from '../../../Components/Events/Men-Events/menEvents'
-import Footer from '../../../Components/footer/footer'
+import Navbar from '../../../components/nav-side/ns'
+import MenEvents from '../../../components/Events/Men-Events/menEvents'
+
 
 function MenPages() {
 
@@ -13,7 +13,7 @@ function MenPages() {
 
         <Navbar/>
         <MenEvents/>
-        <Footer/>
+       
 
     
     
