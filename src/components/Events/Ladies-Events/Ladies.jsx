@@ -1,11 +1,24 @@
-import React from 'react'
+import React, {useState} from 'react'
 // import './Teens.css'
 import generalEvents from '../../../Assets/Events/general_events.jpg'
 import {Link} from 'react-router-dom'
- 
+import {BsSearch} from 'react-icons/bs'
+import {BiAddToQueue} from 'react-icons/bi'
+import CreateLadiesModal from '../Ladies-Events/createGE-Modal/createGE'
 
 
 function LadiesEvents (){
+
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const openModal = () => {
+        setIsModalOpen(true);
+    };
+
+    const closeModal = () => {
+        setIsModalOpen(false);
+    };
+
 
     return(
 
@@ -15,7 +28,29 @@ function LadiesEvents (){
             <section className="general-events">
 
                 <p className='gen-title'>Events for Ladies</p>
-                <p className='event-desc'>These are the events that the Ladies are involved in</p>
+                {/* <p className='event-desc'>These are the events that the Ladies are involved in</p> */}
+
+                    <div className="search-add">
+
+                        <div className="search">
+
+
+                            <input type='text' placeholder='search by name of event'/>
+
+                            <BsSearch className='search-icon'/>
+
+                        </div>
+
+                        <div className="add" onClick={openModal}>
+
+                            <p className='add-p'>Create Ladies' Event</p>
+                            <BiAddToQueue className='add-icon' />
+                            
+
+
+                        </div>
+
+                    </div>
 
                 <div className='all-events'>
 
@@ -106,6 +141,8 @@ function LadiesEvents (){
 
             </section>
         
+            <CreateLadiesModal isOpen={isModalOpen} onClose={closeModal} />
+
         
         
         </>
