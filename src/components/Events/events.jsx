@@ -48,7 +48,7 @@ function Events (){
 
                             <div className="up-del">
                                 
-                                <Link to='/events-men' className='links-events'><p className='see-more-events'>See More</p></Link>
+                                <Link to='/men-events' className='links-events'><p className='see-more-events'>See More</p></Link>
 
                             </div>
 
@@ -63,7 +63,7 @@ function Events (){
 
                             <div className="up-del">
                                 
-                                <Link to='/events-ladies' className='links-events'><p className='see-more-events'>See More</p></Link>
+                                <Link to='/ladies-events' className='links-events'><p className='see-more-events'>See More</p></Link>
 
                             </div>
 
@@ -78,7 +78,7 @@ function Events (){
 
                             <div className="up-del">
                                 
-                                <Link to='/events-youths' className='links-events'><p className='see-more-events'>See More</p></Link>
+                                <Link to='/youth-events' className='links-events'><p className='see-more-events'>See More</p></Link>
 
                             </div>
 
@@ -93,7 +93,7 @@ function Events (){
 
                             <div className="up-del">
                                 
-                                <Link to='/events-teen' className='links-events'><p className='see-more-events'>See More</p></Link>
+                                <Link to='/teen-events' className='links-events'><p className='see-more-events'>See More</p></Link>
 
                             </div>
 
@@ -107,7 +107,7 @@ function Events (){
                            
                             <div className="up-del">
                                 
-                                <Link to='/events-kids' className='links-events'><p className='see-more-events'>See More</p></Link>
+                                <Link to='/kids-events' className='links-events'><p className='see-more-events'>See More</p></Link>
 
                             </div>
 
