@@ -67,6 +67,36 @@ function CreateProjectModal({ isOpen, onClose }) {
 
         <div className="modal-input">
 
+          <label htmlFor="title">Actual Date for Event:</label>
+
+          <input
+            type="date"
+            id="title"
+            value={title}
+            onChange={handleTitleChange}
+            placeholder="Enter project title"
+          />
+
+        </div>
+
+        <div className="modal-input">
+
+          <label htmlFor="title">Registration Deadline Date for Event:</label>
+
+          <input
+            type="date"
+            id="title"
+            value={title}
+            onChange={handleTitleChange}
+            placeholder="Enter project title"
+          />
+
+        </div>
+
+        
+
+        <div className="modal-input">
+
           <label htmlFor="description">Description:</label>
           <textarea
             id="description"
