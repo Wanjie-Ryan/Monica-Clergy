@@ -16,7 +16,7 @@ import MenComponent from './pages/Events/Men-Events/Men'
 import SingleMenComponent from './pages/Events/Men-Events/singleMen'
 import LadiesComponent from './pages/Events/Ladies-Events/Ladies'
 import SingleLadiesComponent from './pages/Events/Ladies-Events/SingleLadies'
-
+import FeedbackComponent from './pages/feedback/fb'
 
 
 
@@ -46,7 +46,7 @@ function App (){
           <Route path ='/men-events/:id' element ={<SingleMenComponent/>}/>
           <Route path ='/ladies-events' element ={<LadiesComponent/>}/>
           <Route path ='/ladies-events/:id' element ={< SingleLadiesComponent/>}/>
-
+          <Route path ='/feedback' element ={<FeedbackComponent/>}/>
 
         </Routes>
 
