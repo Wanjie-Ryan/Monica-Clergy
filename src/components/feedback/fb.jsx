@@ -1,6 +1,6 @@
 import React from 'react'
 import './fb.css'
-
+import {AiFillPrinter} from 'react-icons/ai'
 
 
 
@@ -22,9 +22,9 @@ function FeedBack (){
 
                 <div className="projects-container">
 
-                    
                     <div className="table-container">
 
+                        <AiFillPrinter className='printer'/>
                         <table className="custom-table">
                             <thead>
 

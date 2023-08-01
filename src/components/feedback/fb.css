@@ -11,6 +11,19 @@
 
 }
 
+.projects-container{
+
+    width:90%;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.printer{
+
+    cursor: pointer;
+    font-size:20px;
+}
+
 .table-container {
     margin-top: 30px;
     overflow-x: auto; /* Add horizontal scrolling for smaller screens */
@@ -37,6 +50,12 @@
   
   /* Responsive styles */
   @media screen and (max-width: 768px) {
+    
+    .projects-container{
+
+        width:100%;
+    }
+
     .custom-table {
       font-size: 14px; /* Reduce font size for smaller screens */
     }
