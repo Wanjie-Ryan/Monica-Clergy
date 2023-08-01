@@ -1,11 +1,25 @@
-import React from 'react'
+import React, {useState} from 'react'
 import './KidsEvents.css'
 import generalEvents from '../../../Assets/Events/general_events.jpg'
 import {Link} from 'react-router-dom'
- 
+import {BsSearch} from 'react-icons/bs'
+import {BiAddToQueue} from 'react-icons/bi'
+import CreateKidsModal from '../Kids-Events/createGE-Modal/createGE'
+
+
 
 
 function KidsEvents (){
+
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const openModal = () => {
+        setIsModalOpen(true);
+    };
+
+    const closeModal = () => {
+        setIsModalOpen(false);
+    };
 
     return(
 
@@ -15,7 +29,30 @@ function KidsEvents (){
             <section className="general-events">
 
                 <p className='gen-title'>Events for Kids</p>
-                <p className='event-desc'>These are the events that Kids are involved in</p>
+                {/* <p className='event-desc'>These are the events that Kids are involved in</p> */}
+
+                    <div className="search-add">
+
+                        <div className="search">
+
+
+                            <input type='text' placeholder='search by name of event'/>
+
+                            <BsSearch className='search-icon'/>
+
+                        </div>
+
+                        <div className="add" onClick={openModal}>
+
+                            <p className='add-p'>Create Kids' Event</p>
+                            <BiAddToQueue className='add-icon' />
+                            
+
+
+                        </div>
+
+                    </div>
+
 
                 <div className='all-events'>
 
@@ -107,6 +144,8 @@ function KidsEvents (){
             </section>
         
         
+            <CreateKidsModal isOpen={isModalOpen} onClose={closeModal} />
+
         
         </>
     )
