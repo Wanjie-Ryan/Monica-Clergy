@@ -2,9 +2,11 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 import churchview from '../../Assets/homeImages/church_view.jpg'
 import GE from '../../Assets/Events/general_events.jpg'
-
-
-
+import men from '../../Assets/Events/men.jpg'
+import WE from '../../Assets/Events/women_events.jpg'
+import './events.css'
+import Youths from '../../Assets/homeImages/youth.jpg'
+import kids from '../../Assets/homeImages/sunday school.jpg'
 
 
 function Events (){
@@ -19,21 +21,20 @@ function Events (){
 
                 <div className="projects-container">
 
+                    <div className='add-events'><p className='add-p'>Events</p></div>
+
                     <div className="actual-projects">
 
                         <div className="project-img">
 
+                            <p className='project-desc-events'>General Events</p>
+
                             <img src ={GE} alt='church' className='img-proj'/>
 
-                            <div className="img-text">
-
-                                <p className='project-desc'>General Events</p>
-
-                            </div>
 
                             <div className="up-del">
                                 
-                                <p>See More</p>
+                                <Link to='/general-events' className='links-events'><p className='see-more-events'>See More</p></Link>
 
                             </div>
 
@@ -41,17 +42,13 @@ function Events (){
 
                         <div className="project-img">
 
-                            <img src ={churchview} alt='church' className='img-proj'/>
+                            <p className='project-desc-events'>Events for Men</p>
+                            <img src ={men} alt='church' className='img-proj'/>
 
-                            <div className="img-text">
-
-                                <p className='project-desc'>Events for Men</p>
-
-                            </div>
 
                             <div className="up-del">
                                 
-                                <p>See More</p>
+                                <Link to='/events-men' className='links-events'><p className='see-more-events'>See More</p></Link>
 
                             </div>
 
@@ -59,17 +56,14 @@ function Events (){
 
                         <div className="project-img">
 
-                            <img src ={churchview} alt='church' className='img-proj'/>
+                            <p className='project-desc-events'>Events for Ladies</p>
+                            <img src ={WE} alt='church' className='img-proj'/>
 
-                            <div className="img-text">
-
-                                <p className='project-desc'>Events for Ladies</p>
-
-                            </div>
+                           
 
                             <div className="up-del">
                                 
-                                <p>See More</p>
+                                <Link to='/events-ladies' className='links-events'><p className='see-more-events'>See More</p></Link>
 
                             </div>
 
@@ -77,17 +71,14 @@ function Events (){
 
                         <div className="project-img">
 
-                            <img src ={churchview} alt='church' className='img-proj'/>
+                            <p className='project-desc-events'>Events for Youths</p>
+                            <img src ={Youths} alt='church' className='img-proj'/>
 
-                            <div className="img-text">
-
-                                <p className='project-desc'>Events for Youths</p>
-
-                            </div>
+                            
 
                             <div className="up-del">
                                 
-                                <p>See More</p>
+                                <Link to='/events-youths' className='links-events'><p className='see-more-events'>See More</p></Link>
 
                             </div>
 
@@ -95,17 +86,14 @@ function Events (){
 
                         <div className="project-img">
 
+                            <p className='project-desc-events'>Events for Teens</p>
                             <img src ={churchview} alt='church' className='img-proj'/>
 
-                            <div className="img-text">
-
-                                <p className='project-desc'>Events for Teens</p>
-
-                            </div>
+                            
 
                             <div className="up-del">
                                 
-                                <p>See More</p>
+                                <Link to='/events-teen' className='links-events'><p className='see-more-events'>See More</p></Link>
 
                             </div>
 
@@ -113,17 +101,13 @@ function Events (){
 
                         <div className="project-img">
 
-                            <img src ={churchview} alt='church' className='img-proj'/>
+                            <p className='project-desc-events'>Events for Kids</p>
+                            <img src ={kids} alt='church' className='img-proj'/>
 
-                            <div className="img-text">
-
-                                <p className='project-desc'>Events for Kids</p>
-
-                            </div>
-
+                           
                             <div className="up-del">
                                 
-                                <p>See More</p>
+                                <Link to='/events-kids' className='links-events'><p className='see-more-events'>See More</p></Link>
 
                             </div>
 
