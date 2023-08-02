@@ -88,5 +88,14 @@
 
         flex-direction:column;
     }
+
+    .pwd-icon{
+
+        display:none;
+    }
+
+   
+
+    
     
 }

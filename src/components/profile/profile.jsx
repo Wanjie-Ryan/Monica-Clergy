@@ -27,7 +27,7 @@ function Profile (){
                         <form className="update">
 
 
-                            <div className='pwd'>
+                            <div className='pwd update-pwd'>
 
                                 <label className='update-text'>Change Name</label>
 
@@ -36,7 +36,7 @@ function Profile (){
 
                             </div>
 
-                            <div className="pwd">
+                            <div className="pwd update-pwd">
 
                                 <label className='update-text'>Change Photo</label> 
                                 <input
