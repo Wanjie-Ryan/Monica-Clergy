@@ -49,9 +49,44 @@
     flex-direction: row;
 }
 
+.update-pwd button{
+
+    background-color: #693d56;
+    padding:12px 16px 12px 16px;
+    width:291px;
+    height:48px;
+    margin-top:20px;
+    border:none;
+    border-radius: 10px;
+    cursor:pointer;
+    color:white;
+    font-size:16px;
+    transition: background-color 0.3s ease-in-out;
+    margin-right: 20px;
+}
+
 .update-text{
 
     color:rgba(105, 61, 86, 1);
     margin-right:10px;
     font-weight:700;
+}
+
+.prof-icon{
+
+    font-size:21px;
+}
+
+@media screen and (max-width:768px) {
+
+    .profile-container{
+
+        width:100%;
+    }
+
+    .update-pwd{
+
+        flex-direction:column;
+    }
+    
 }

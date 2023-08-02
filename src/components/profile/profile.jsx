@@ -2,7 +2,7 @@ import React from 'react'
 import './profile.css'
 import Avatar from '../../Assets/DefaultAvatar.png'
 import {AiOutlineEye} from 'react-icons/ai'
-
+import {BiPowerOff} from 'react-icons/bi'
 
 
 function Profile (){
@@ -24,7 +24,7 @@ function Profile (){
                         
                     </div>
 
-                        <div className="update">
+                        <form className="update">
 
 
                             <div className='pwd'>
@@ -58,8 +58,16 @@ function Profile (){
                                 <AiOutlineEye className='pwd-icon'/>
                             </div>
 
+                            <div className='update-pwd'>
 
-                        </div>
+                                <button type='submit'>Update Details</button>
+                                <button type='submit'><BiPowerOff className='prof-icon'/> Log Out</button>
+
+                        
+                            </div>
+
+                        </form>
+
 
                 </div>
 
