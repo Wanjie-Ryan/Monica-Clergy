@@ -1,7 +1,7 @@
 .profile{
 
     width:100%;
-    margin-top:50px;
+    margin-top:30px;
 }
 
 .profile-container{
@@ -30,4 +30,28 @@
     width:100px;
     height:100px;
     object-fit: cover;
+}
+
+.update{
+
+    width: 100%;
+    margin-top:70px;
+    display:flex;
+    flex-direction:column;
+    /* justify-content: center; */
+    align-items:center;
+    gap:2rem;
+}
+
+.update-pwd{
+
+    display:flex;
+    flex-direction: row;
+}
+
+.update-text{
+
+    color:rgba(105, 61, 86, 1);
+    margin-right:10px;
+    font-weight:700;
 }
