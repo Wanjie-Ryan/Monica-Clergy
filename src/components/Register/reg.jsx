@@ -19,6 +19,8 @@ function Register (){
         setContact(phoneNumber)
     }
 
+    // console.log(contact)
+
 
     return(
 
