@@ -106,7 +106,7 @@ function Login (){
                 return;
               } else {
                 seterrMsg(
-                  "There seems to be an error, refresh the page and try again!"
+                  "You entered incorrect credentials, refresh the page and try again!"
                 );
                 setLoading(false);
               }
