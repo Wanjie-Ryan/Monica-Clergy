@@ -1,10 +1,15 @@
 import React, { useState } from 'react';
 import '../projects.css'
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-function CreateProjectModal({ isOpen, onClose }) {
+function CreateProjectModal({ isOpen, onClose, token }) {
 
   const [title, setTitle] = useState('');
+  const [image, setImage] = useState()
   const [description, setDescription] = useState('');
+  const [loading, setLoading] = useState(false)
+  const [errmsg, seterrMsg] = useState('')
 
   const handleTitleChange = (e) => {
 
@@ -13,12 +18,37 @@ function CreateProjectModal({ isOpen, onClose }) {
   };
 
   const handleDescriptionChange = (e) => {
-
+    
     setDescription(e.target.value);
-
+    
   };
+  
+  // pq4z6rjr
 
-  const handleSubmit = () => {
+
+  const handleSubmitProject = async(e) => {
+
+    e.preventDefault()
+
+    if(!title || !image || !description){
+
+      toast.error('Please fill in all the field')
+      return
+    }
+
+    setLoading(true)
+
+    try{
+
+
+    }
+
+    catch(err){
+
+      
+    }
+
+
 
     
     onClose();
@@ -35,7 +65,7 @@ function CreateProjectModal({ isOpen, onClose }) {
 
     <div className="modal">
 
-      <div className="modal-content">
+      <form className="modal-content" onSubmit={handleSubmitProject}>
 
         <h2>Create Project</h2>
 
@@ -77,10 +107,10 @@ function CreateProjectModal({ isOpen, onClose }) {
 
         </div>
 
-        <button onClick={handleSubmit}>Submit</button>
+        <button type='submit'>Submit</button>
         <button onClick={onClose}>Cancel</button>
 
-      </div>
+      </form>
     </div>
 
   );

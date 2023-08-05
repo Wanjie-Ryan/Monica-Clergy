@@ -160,7 +160,7 @@ function Projects (){
             </section>
         
         
-            <CreateProjectModal isOpen={isModalOpen} onClose={closeModal} />
+            <CreateProjectModal isOpen={isModalOpen} onClose={closeModal} token={Cookies.get().clergyToken}/>
             <UpdateProjectModal isOpen ={updateModalOpen} onClose ={UpdatecloseModal}/>
         
         

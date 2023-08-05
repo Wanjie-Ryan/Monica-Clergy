@@ -245,14 +245,14 @@ function Navbar() {
 
                         <div className="aside-avatar">
 
-                            <Link to='/profile' onClick ={handleNav}><img src={Favi} alt='' /></Link>
+                            <Link to='/profile' onClick ={handleNav}><img src={image} alt='' className="logo" /></Link>
 
                         </div>
 
                         <div className="user-details">
 
-                            <p className='username'>Ryan Wanjie</p>
-                            <p className='useremail'>ryan@gmail.com</p>
+                            <p className='username'>{greeting} {username}</p>
+                            <p className='useremail'>{email}</p>
 
                         </div>
 
