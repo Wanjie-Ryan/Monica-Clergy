@@ -210,3 +210,26 @@
     }
 
 }
+
+.loading-icon{
+
+    animation: spin 1s linear infinite;
+    color:purple;
+    font-size: 20px;
+}
+
+@keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+.error-msg{
+
+    color:red;
+    font-weight: 600;
+
+}

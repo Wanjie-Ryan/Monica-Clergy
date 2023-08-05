@@ -1,6 +1,6 @@
 import React, {useState, useContext, useEffect} from 'react'
 import './reg.css'
-import {AiOutlineEye} from 'react-icons/ai'
+import {AiOutlineEye,AiOutlineLoading3Quarters} from 'react-icons/ai'
 import {Link} from 'react-router-dom'
 import view from '../../Assets/homeImages/view 2.jpg'
 import {BsFillPersonFill,BsTelephone} from 'react-icons/bs'
@@ -24,6 +24,7 @@ function Register (){
     const [contact, setContact] = useState('+254')
     const [pwd, setPwd] = useState()
     const [Loading, setLoading] = useState(false)
+    const [errMsg, setErrmsg] = useState('')
     
 
     const {staff, loading, error, dispatch} = useContext(RegContext)
@@ -73,7 +74,7 @@ function Register (){
             formData.append('upload_preset', 'nthqh135')
             const imageData = await axios.post('https://api.cloudinary.com/v1_1/djgk2k4sw/image/upload', formData)
 
-            console.log(imageData)
+            // console.log(imageData)
 
             const submissionData = {
 
@@ -87,34 +88,61 @@ function Register (){
 
             const registerData =  await axios.post('http://localhost:3005/api/clergy/auth/register', submissionData)
 
-            console.log(registerData)
+            // console.log(registerData)
 
             dispatch({type:'regComplete', payload:registerData.data})
 
             toast.success('Registration Successful');
 
+            setTimeout(()=>{
 
+                navigate('/login')
+
+            },1000)
+
+            setLoading(false)
         }
 
         catch(err){
 
+            // console.log(err)
+
+            dispatch({type:'regFail', payload:err})
+
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if(pwd.length < 5){
+
+                toast.error('Password is too short. Please enter at least 5 characters.')
+                setLoading(false)
+
+
+                return
+
+            }
+            else if(!emailRegex.test(email)){
+
+                toast.error('Invalid email address. Please enter a valid email.');
+                setLoading(false)
+
+                return;
+
+            }
+
+            else{
+
+                setErrmsg('There seems to be an error, refresh the page and try again!')
+                setLoading(false)
+
+            }
 
 
         }
-
-
-
-
-
-
-
 
     }
 
 
     
-
-
     return(
 
         <>
@@ -170,7 +198,6 @@ function Register (){
 
                             <PhoneInput  placeholder='Your Phone Number' className='pwd-input' onChange ={handleContact} value={contact} />
 
-                            {/* <BsTelephone className='pwd-icon'/> */}
                         </div>
 
                         <div className='pwd'>
@@ -180,11 +207,11 @@ function Register (){
                             <AiOutlineEye className='pwd-icon'/>
                         </div>
 
-                        {/* <p className='forgot'>Forgot Password?</p> */}
 
                     </div>
 
-                        <button type='submit'>Register</button>
+                        <button type='submit'>{Loading? <AiOutlineLoading3Quarters className='loading-icon'/> : 'Register'}</button>
+                        {errMsg? <p className='error-msg'>{errMsg}</p> : ''}
 
                 </form>
 
