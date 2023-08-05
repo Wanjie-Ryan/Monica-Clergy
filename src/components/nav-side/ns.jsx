@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import './ns.css'
 import {Link} from 'react-router-dom'
 import SiteLogo from '../../Assets/favicon.jpg'
@@ -24,7 +24,39 @@ function Navbar() {
 
     const LogDetails = JSON.parse(localStorage.getItem('clergyLoginDetails'))
 
-    console.log(LogDetails)
+    // console.log(LogDetails)
+
+        let username 
+        let email  
+        let image
+
+    if(LogDetails){
+
+        username = LogDetails.name
+        email = LogDetails.email
+        image = LogDetails.image
+    }
+
+    const [greeting, setGreeting] = useState('');
+
+    useEffect(() => {
+      
+      const currentHour = new Date().getHours();
+  
+      if (currentHour >= 5 && currentHour < 12) {
+
+        setGreeting('Good Morning');
+
+      } else if (currentHour >= 12 && currentHour < 18) {
+
+        setGreeting('Good Afternoon');
+
+      } else {
+
+        setGreeting('Good Evening');
+      }
+    }, []);
+     
 
         
         
@@ -105,8 +137,8 @@ function Navbar() {
 
                             <Link to='/profile' className='nav-p'>
 
-                                <img src ={Favi} alt='img' className="logo" />
-                                <p className='profile-name'>Hello, John Mureithi</p>
+                                <img src ={image} alt='img' className="logo" />
+                                <p className='profile-name'>{greeting} {username}</p>
 
 
                             </Link>
