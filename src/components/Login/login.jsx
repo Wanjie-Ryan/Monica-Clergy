@@ -57,6 +57,17 @@ function Login (){
 
             console.log(Login)
 
+            const loginDetails = {
+
+                name:Login.data.clergyLogin.name,
+                image:Login.data.clergyLogin.image,
+                email:Login.data.clergyLogin.email,
+            }
+
+            localStorage.setItem('clergyLoginDetails', JSON.stringify(loginDetails))
+
+            
+
             dispatch({type:'logComplete', payload:Login.data})
 
             toast.success("Login Successful");
