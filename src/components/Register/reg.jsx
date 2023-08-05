@@ -56,7 +56,7 @@ function Register (){
 
         if(!name || !email || !contact || !pwd){
 
-            toast('Please fill in all the fields.');
+            toast.error('Please fill in all the fields.');
             return
             
         }
@@ -69,11 +69,29 @@ function Register (){
 
             const formData = new FormData()
             formData.append('file', image)
-            formData.append('upload_preset', 'nthqh135')
 
+            formData.append('upload_preset', 'nthqh135')
             const imageData = await axios.post('https://api.cloudinary.com/v1_1/djgk2k4sw/image/upload', formData)
 
             console.log(imageData)
+
+            const submissionData = {
+
+                name:name,
+                image:imageData.data.secure_url,
+                email:email,
+                tel:contact,
+                password:pwd
+            }
+
+
+            const registerData =  await axios.post('http://localhost:3005/api/clergy/auth/register', submissionData)
+
+            console.log(registerData)
+
+            dispatch({type:'regComplete', payload:registerData.data})
+
+            toast.success('Registration Successful');
 
 
         }
@@ -132,7 +150,7 @@ function Register (){
                                 id="imageFile"
                                 accept="image/*"
                                 className='pwd-input'
-                                // onChange={handleImageChange}
+                                onChange = {(e)=>{setImage(e.target.files[0])}}
                             />
                             
                             <CgProfile className='pwd-icon'/>
