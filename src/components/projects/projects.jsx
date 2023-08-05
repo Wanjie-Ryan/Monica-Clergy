@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import './projects.css'
 import {BsSearch,BsPencil} from 'react-icons/bs'
 import {BiAddToQueue} from 'react-icons/bi'
@@ -7,6 +7,10 @@ import churchview from '../../Assets/homeImages/church_view.jpg'
 import {RiDeleteBin7Fill} from 'react-icons/ri'
 import CreateProjectModal from '../projects/createProject-Modal/createproject'
 import UpdateProjectModal from '../projects/updateProject-Modal/updateProject'
+import axios from 'axios'
+import Cookies from 'js-cookie'
+import { useNavigate } from 'react-router-dom'
+
 
 function Projects (){
 
@@ -31,6 +35,44 @@ function Projects (){
     const UpdatecloseModal = () => {
         setupdateModalOpen(false);
     };
+
+    const navigate = useNavigate()
+
+    useEffect(()=>{
+
+        const checkAuth = async()=>{
+
+            if(!Cookies.get().clergyToken || Cookies.get().clergyToken === undefined){
+
+                navigate('/login')
+
+            }
+
+            else{
+
+                const token = Cookies.get().clergyToken
+
+                const res = await axios({method:'get', url:'http://localhost:3005/api/clergy/auth/verify', headers:{Authorization:'Bearer ' + token}, data:{}})
+
+                    if (res.data.type !== 'success') {
+
+                        navigate('/login')
+
+                    }
+
+
+            }
+
+            
+            
+        }
+        
+        checkAuth()
+
+
+    },[navigate])
+
+
 
     return(
 
