@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useContext, useEffect} from 'react'
 import './reg.css'
 import {AiOutlineEye} from 'react-icons/ai'
 import {Link} from 'react-router-dom'
@@ -8,15 +8,23 @@ import {MdEmail} from 'react-icons/md'
 import 'react-phone-number-input/style.css';
 import PhoneInput from 'react-phone-number-input';
 import {CgProfile} from 'react-icons/cg'
+import {useNavigate} from 'react-router-dom'
+import {RegContext} from '../../context/RegContext'
+import axios from 'axios'
+
 
 function Register (){
 
 
+    const navigate = useNavigate()
     const [name, setName] = useState()
     const [image,setImage] = useState()
     const [email, setEmail] = useState()
     const [contact, setContact] = useState('+254')
     const [pwd, setPwd] = useState()
+
+    const {staff, loading, error, dispatch} = useContext(RegContext)
+
 
     const handleName = (e)=>{
 
@@ -42,6 +50,8 @@ function Register (){
 
         setPwd(e.target.value)
     }
+
+
 
     
 
