@@ -13,6 +13,74 @@ import {useNavigate} from 'react-router-dom'
 
 function Login (){
 
+    const navigate = useNavigate()
+    const [email, setEmail] = useState()
+    const [pwd, setPwd] = useState()
+    const [Loading, setLoading] = useState(false)
+    const [errMsg, seterrMsg] = useState('')
+
+    const {staff, loading, error, dispatch} = useContext(LogContext)
+
+    const handleEmail = (e)=>{
+
+        setEmail(e.target.value)
+    }
+
+    const handlePwd = (e)=>{
+
+        setPwd(e.target.value)
+    }
+
+    const handleLogin = async(e)=>{
+
+        e.preventDefault()
+
+        if(!email || !pwd){
+
+            toast.error("Please fill in all the fields.");
+            return;
+        }
+
+        setLoading(true)
+
+        dispatch({type:'logStart'})
+
+        try{
+
+            const loginData = {
+
+                email:email,
+                password:pwd
+            }
+
+            const Login =  await axios.post('http://localhost:3005/api/clergy/auth/login', loginData)
+
+            console.log(Login)
+
+            dispatch({type:'logComplete', payload:Login.data})
+
+            toast.success("Login Successful");
+
+            setLoading(false)
+
+
+
+
+
+        }
+
+        catch(err){
+
+            console.log(err)
+        }
+
+
+    }
+
+
+
+
+
     return(
 
         <>
@@ -31,13 +99,13 @@ function Login (){
 
                         </div>
 
-                        <form className="container-title">
+                        <form className="container-title" onSubmit={handleLogin}>
 
                             <div className="input-details">
 
                                 <div className='pwd'>
 
-                                    <input type='email' placeholder='Your Email Address' className='pwd-input' />
+                                    <input type='email' placeholder='Your Email Address' className='pwd-input' value={email} onChange={handleEmail} />
 
                                     <MdEmail className='pwd-icon'/>
 
@@ -45,16 +113,15 @@ function Login (){
 
                                 <div className='pwd'>
 
-                                    <input type='password' placeholder='Password' className='pwd-input' />
+                                    <input type='password' placeholder='Password' className='pwd-input' value={pwd} onChange={handlePwd} />
 
                                     <AiOutlineEye className='pwd-icon'/>
                                 </div>
 
-                                {/* <p className='forgot'>Forgot Password?</p> */}
 
                             </div>
 
-                            <Link to='/project'><button type='submit'>Sign In</button></Link>
+                            <button type='submit'>Sign In</button>
 
                         </form>
 
