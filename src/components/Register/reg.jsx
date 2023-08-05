@@ -12,14 +12,38 @@ import {CgProfile} from 'react-icons/cg'
 function Register (){
 
 
+    const [name, setName] = useState()
+    const [image,setImage] = useState()
+    const [email, setEmail] = useState()
     const [contact, setContact] = useState('+254')
+    const [pwd, setPwd] = useState()
+
+    const handleName = (e)=>{
+
+        setName(e.target.value)
+    }
+
+    const handleImage = (e)=>{
+
+        
+    }
+
+    const handleEmail = (e)=>{
+
+        setEmail(e.target.value)
+    }
 
     const handleContact =(phoneNumber)=>{
 
         setContact(phoneNumber)
     }
 
-    // console.log(contact)
+    const handlePwd = (e)=>{
+
+        setPwd(e.target.value)
+    }
+
+    
 
 
     return(
@@ -44,7 +68,7 @@ function Register (){
 
                         <div className='pwd'>
 
-                            <input type='text' placeholder='Enter Your Name' className='pwd-input' />
+                            <input type='text' placeholder='Enter Your Name' className='pwd-input' value ={name} onChange ={handleName} />
 
                             <BsFillPersonFill className='pwd-icon'/>
 
@@ -67,7 +91,7 @@ function Register (){
 
                         <div className='pwd'>
 
-                            <input type='email' placeholder='Your Email Address' className='pwd-input' />
+                            <input type='email' placeholder='Your Email Address' className='pwd-input' value={email} onChange={handleEmail} />
 
                             <MdEmail className='pwd-icon'/>
 
@@ -82,7 +106,7 @@ function Register (){
 
                         <div className='pwd'>
 
-                            <input type='password' placeholder='Password' className='pwd-input' />
+                            <input type='password' placeholder='Password' className='pwd-input' value ={pwd} onChange = {handlePwd} />
 
                             <AiOutlineEye className='pwd-icon'/>
                         </div>

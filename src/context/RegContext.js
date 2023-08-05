@@ -1,49 +1,54 @@
-import React, {useState, createContext, useEffect, useContext, useReducer} from  'react'
-
+import React, { createContext, useReducer } from "react";
 
 const initialState = {
+  staff: null,
+  loading: false,
+  error: null,
+};
 
-    staff:null,
-    loading:false,
-    error:null
-}
+export const RegContext = createContext(initialState);
 
-export const RegContext  = createContext(initialState)
+const regReducer = (action, state) => {
+  switch (action.type) {
+    case "regStart":
+      return {
+        staff: null,
+        loading: true,
+        error: null,
+      };
 
-const regReducer =(action, state)=>{
+    case "regComplete":
+      return {
+        staff: action.payload,
+        loading: false,
+        error: null,
+      };
 
-    switch(action.type){
+    case "regFail":
+      return {
+        staff: null,
+        loading: false,
+        error: action.payload,
+      };
 
-        case 'regStart':
+    default:
+      return state;
+  }
+};
 
-        return{
+export const RegContextProvider = ({ children }) => {
+  const [state, dispatch] = useReducer(regReducer, initialState);
 
-            staff:null,
-            loading:true,
-            error:null
-        }
-
-        case 'regComplete':
-
-        return{
-
-            staff:action.payload,
-            loading:false,
-            error:null
-        }
-
-        case 'regFail':
-
-        return{
-
-            staff:null,
-            loading:false,
-            error:action.payload
-        }
-
-        default:return state
-    }
-}
-
-
-
+  return (
+    <RegContext.Provider
+      value={{
+        staff: state.staff,
+        loading: state.loading,
+        error: state.error,
+        dispatch,
+      }}
+    >
+      {children}
+    </RegContext.Provider>
+  );
+};
