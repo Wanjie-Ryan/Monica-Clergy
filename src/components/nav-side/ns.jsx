@@ -22,7 +22,9 @@ function Navbar() {
         setshowNav(!showNav)
     }
 
-    
+    const LogDetails = JSON.parse(localStorage.getItem('clergyLoginDetails'))
+
+    console.log(LogDetails)
 
         
         
