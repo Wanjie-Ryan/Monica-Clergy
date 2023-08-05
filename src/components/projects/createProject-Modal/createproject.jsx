@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import '../projects.css'
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import axios from 'axios'
+
 
 function CreateProjectModal({ isOpen, onClose, token }) {
 
@@ -23,7 +25,6 @@ function CreateProjectModal({ isOpen, onClose, token }) {
     
   };
   
-  // pq4z6rjr
 
 
   const handleSubmitProject = async(e) => {
@@ -36,16 +37,51 @@ function CreateProjectModal({ isOpen, onClose, token }) {
       return
     }
 
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
+
     setLoading(true)
 
     try{
+
+      const formData = new FormData();
+      formData.append("file", image);
+
+      formData.append("upload_preset", "pq4z6rjr");
+
+      const imageData = await axios.post(
+        "https://api.cloudinary.com/v1_1/djgk2k4sw/image/upload",
+        formData
+      );
+
+      const projectData = {
+
+        title:title,
+        image:imageData.data.secure_url,
+        description:description
+      }
+
+      const ProjectSubdata = await axios.post('http://localhost:3005/api/clergy/projects/createproject',projectData, config)
+
+      console.log(ProjectSubdata)
+
+      toast.success('Project has been created successfully')
+
+      setLoading(false)
 
 
     }
 
     catch(err){
 
-      
+      console.log(err)
+
+
+
+
     }
 
 
@@ -90,7 +126,10 @@ function CreateProjectModal({ isOpen, onClose, token }) {
             type="file"
             id="imageFile"
             accept="image/*"
-            // onChange={handleImageChange}
+            onChange={(e) => {
+              setImage(e.target.files[0]);
+            }}
+           
           />
           
         </div>

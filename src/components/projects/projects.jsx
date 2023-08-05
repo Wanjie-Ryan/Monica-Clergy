@@ -52,14 +52,16 @@ function Projects (){
 
                 const token = Cookies.get().clergyToken
 
-                const res = await axios({method:'get', url:'http://localhost:3005/api/clergy/auth/verify', headers:{Authorization:'Bearer ' + token}, data:{}})
+               
+
+                    const res = await axios({method:'get', url:'http://localhost:3005/api/clergy/auth/verify', headers:{Authorization:'Bearer ' + token}, data:{}})
 
                     if (res.data.type !== 'success') {
 
                         navigate('/login')
 
                     }
-
+                
 
             }
 
