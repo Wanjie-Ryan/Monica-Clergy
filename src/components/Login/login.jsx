@@ -1,9 +1,15 @@
-import React from 'react'
+import React, {useState, useContext} from 'react'
 import './login.css'
-import {AiOutlineEye} from 'react-icons/ai'
+import {AiOutlineEye,AiOutlineLoading3Quarters} from 'react-icons/ai'
 import view from '../../Assets/homeImages/view 2.jpg'
 import {MdEmail} from 'react-icons/md'
 import {Link} from 'react-router-dom'
+import axios from 'axios'
+import {LogContext} from '../../context/LoginContext'
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import {useNavigate} from 'react-router-dom'
+
 
 function Login (){
 
