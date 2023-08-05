@@ -9,7 +9,7 @@ import {LogContext} from '../../context/LoginContext'
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import {useNavigate} from 'react-router-dom'
-
+import Cookies from 'js-cookie'
 
 function Login (){
 
@@ -55,7 +55,7 @@ function Login (){
 
             const Login =  await axios.post('http://localhost:3005/api/clergy/auth/login', loginData)
 
-            console.log(Login)
+            // console.log(Login)
 
             const loginDetails = {
 
@@ -64,17 +64,28 @@ function Login (){
                 email:Login.data.clergyLogin.email,
             }
 
+            // console.log(loginDetails)
+
             localStorage.setItem('clergyLoginDetails', JSON.stringify(loginDetails))
 
-            
+            const LoginToken = Login.data.clergyToken
+
+            // console.log(LoginToken)
+
+            Cookies.set('clergyToken', LoginToken)
 
             dispatch({type:'logComplete', payload:Login.data})
 
             toast.success("Login Successful");
 
+            setTimeout(()=>{
+
+                navigate('/project')
+
+
+            },1000)
+
             setLoading(false)
-
-
 
 
 
@@ -82,7 +93,25 @@ function Login (){
 
         catch(err){
 
-            console.log(err)
+            // console.log(err)
+
+            dispatch({ type: "logFail", payload: err });
+
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (!emailRegex.test(email)) {
+                toast.error("Invalid email address. Please enter a valid email.");
+                setLoading(false);
+        
+                return;
+              } else {
+                seterrMsg(
+                  "There seems to be an error, refresh the page and try again!"
+                );
+                setLoading(false);
+              }
+
+
         }
 
 
@@ -132,7 +161,14 @@ function Login (){
 
                             </div>
 
-                            <button type='submit'>Sign In</button>
+                                <button type='submit'>{Loading ? (
+
+                                        <AiOutlineLoading3Quarters className="loading-icon" />
+                                    ) : (
+                                        "Sign In"
+                                    )}
+                                </button>
+                                {errMsg? <p className="error-msg">{errMsg}</p> : ''}
 
                         </form>
 
