@@ -11,7 +11,8 @@ import {CgProfile} from 'react-icons/cg'
 import {useNavigate} from 'react-router-dom'
 import {RegContext} from '../../context/RegContext'
 import axios from 'axios'
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Register (){
 
@@ -22,6 +23,8 @@ function Register (){
     const [email, setEmail] = useState()
     const [contact, setContact] = useState('+254')
     const [pwd, setPwd] = useState()
+    const [Loading, setLoading] = useState(false)
+    
 
     const {staff, loading, error, dispatch} = useContext(RegContext)
 
@@ -31,10 +34,6 @@ function Register (){
         setName(e.target.value)
     }
 
-    const handleImage = (e)=>{
-
-        
-    }
 
     const handleEmail = (e)=>{
 
@@ -51,6 +50,48 @@ function Register (){
         setPwd(e.target.value)
     }
 
+    const handleRegistration  = async(e)=>{
+
+        e.preventDefault()
+
+        if(!name || !email || !contact || !pwd){
+
+            toast('Please fill in all the fields.');
+            return
+            
+        }
+
+        setLoading(true)
+
+        dispatch({type:'regStart'})
+
+        try{
+
+            const formData = new FormData()
+            formData.append('file', image)
+            formData.append('upload_preset', 'nthqh135')
+
+            const imageData = await axios.post('https://api.cloudinary.com/v1_1/djgk2k4sw/image/upload', formData)
+
+            console.log(imageData)
+
+
+        }
+
+        catch(err){
+
+
+
+        }
+
+
+
+
+
+
+
+
+    }
 
 
     
@@ -72,7 +113,7 @@ function Register (){
 
                 </div>
 
-                <form className="container-title">
+                <form className="container-title" onSubmit ={handleRegistration}>
 
                     <div className="input-details">
 
@@ -125,7 +166,7 @@ function Register (){
 
                     </div>
 
-                    <Link to='/login'><button type='submit'>Register</button></Link>
+                        <button type='submit'>Register</button>
 
                 </form>
 
