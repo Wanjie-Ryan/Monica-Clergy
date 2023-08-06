@@ -10,6 +10,7 @@ import UpdateProjectModal from '../projects/updateProject-Modal/updateProject'
 import axios from 'axios'
 import Cookies from 'js-cookie'
 import { useNavigate } from 'react-router-dom'
+import {  AiOutlineLoading3Quarters } from "react-icons/ai";
 
 
 function Projects (){
@@ -81,17 +82,32 @@ function Projects (){
 
             try{
 
-                
+                setLoading(true)
 
+                const FetchedProjects = await axios.get('http://localhost:3005/api/clergy/projects/getAllprojects')
+
+                // console.log(FetchedProjects.data.AllProjects)
+
+                const AllprojectsFetched = FetchedProjects.data.AllProjects
+
+
+                setProjects(AllprojectsFetched)
+
+                setLoading(false)
 
 
             }
 
             catch(err){
 
+                console.log(err)
+
+                setErrmsg('There was an error while fetching the data, refresh the page and try again')
 
             }
         }
+
+        fetchProjects()
 
 
 
@@ -129,54 +145,54 @@ function Projects (){
 
                     </div>
 
-                    <div className="actual-projects">
-
-                        <div className="project-img">
-
-                            <img src ={churchview} alt='church' className='img-proj'/>
-
-                            <div className="img-text">
-
-                                <p className='project-desc'>Building a complex for the Youth</p>
-
-                            </div>
-
-                            <div className="up-del">
-                                
-                                <BsPencil className='up-icon' title='update' onClick={UpdateopenModal}/>
-                                <RiDeleteBin7Fill className='up-icon' title='delete'/>
-
-                            </div>
-
-                        </div>
-
-                        <div className="project-img">
-
-                            <img src ={churchview} alt='church' className='img-proj'/>
-
-                            <div className="img-text">
-
-                                <p className='project-desc'>Building a complex for the Youth</p>
-
-                            </div>
-
-                            <div className="up-del">
-                                
-                                <BsPencil className='up-icon' title='update'/>
-                                <RiDeleteBin7Fill className='up-icon' title='delete'/>
-
-                            </div>
 
 
-                        </div>
+                        <div className="actual-projects">
 
+                            {
+                                loading ? (
+
+                                    <AiOutlineLoading3Quarters className="loading-icon" />
+                                ):
+
+                                projects.length === 0 ?(
+
+                                    <p>No projects Have been found</p>
+                                ):(
+
+                                    projects.map((project,index)=>(
+
+
+                                <div className="project-img" key ={index}>
+
+                                    <img src ={project.image} alt='church' className='img-proj'/>
+
+                                    <div className="img-text">
+
+                                        <p className='project-desc'>{project.title}</p>
+
+                                    </div>
+
+                                    <div className="up-del">
+                                        
+                                        <BsPencil className='up-icon' title='update' onClick={UpdateopenModal}/>
+                                        <RiDeleteBin7Fill className='up-icon' title='delete'/>
+
+                                    </div>
+
+                                    {/* <p>{projects.description}</p> */}
+
+                                </div>
+
+                                ))
+
+                            )
+                            }
+
+                            
                         
-
-                        
-
-
-
-                    </div>
+                        </div>
+                    
 
 
                 </div>
