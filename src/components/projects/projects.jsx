@@ -204,7 +204,7 @@ function Projects (){
         
         
             <CreateProjectModal isOpen={isModalOpen} onClose={closeModal} token={Cookies.get().clergyToken}/>
-            <UpdateProjectModal isOpen ={updateModalOpen} onClose ={UpdatecloseModal} projectId={updateprojectId}/>
+            <UpdateProjectModal isOpen ={updateModalOpen} onClose ={UpdatecloseModal} projectId={updateprojectId} token={Cookies.get().clergyToken}/>
         
         
         </>

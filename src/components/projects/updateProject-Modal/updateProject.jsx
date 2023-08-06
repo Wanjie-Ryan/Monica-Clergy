@@ -1,10 +1,18 @@
 import React, { useState } from 'react';
 import '../projects.css'
+import axios from 'axios'
+import {  AiOutlineLoading3Quarters } from "react-icons/ai";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-function UpdateProjectModal({ isOpen, onClose }) {
+
+
+function UpdateProjectModal({ isOpen, onClose, projectId, token }) {
 
   const [title, setTitle] = useState('');
   const [image, setImage] = useState();
+  const [loading, setLoading] = useState(false);
+  const [errMsg, seterrMsg] = useState('')
 
   const handleTitleChange = (e) => {
 
@@ -13,7 +21,25 @@ function UpdateProjectModal({ isOpen, onClose }) {
   };
 
   
-  const handleSubmit = () => {
+  const handleSubmit = async(e) => {
+
+    e.preventDefault()
+
+    if(!title || !image){
+
+      toast.error('Please fill in all the fields')
+      return 
+    }
+
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
+
+
+
+
 
     
     onClose();
@@ -30,7 +56,7 @@ function UpdateProjectModal({ isOpen, onClose }) {
 
     <div className="modal">
 
-      <div className="modal-content">
+      <form className="modal-content">
 
         <h2>Update Project</h2>
 
@@ -68,7 +94,7 @@ function UpdateProjectModal({ isOpen, onClose }) {
         <button onClick={handleSubmit}>Submit</button>
         <button onClick={onClose}>Cancel</button>
 
-      </div>
+      </form>
     </div>
 
   );
