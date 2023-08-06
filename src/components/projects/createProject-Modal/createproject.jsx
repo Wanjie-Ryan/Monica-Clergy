@@ -3,7 +3,7 @@ import '../projects.css'
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from 'axios'
-
+import {  AiOutlineLoading3Quarters } from "react-icons/ai";
 
 function CreateProjectModal({ isOpen, onClose, token }) {
 
@@ -25,7 +25,6 @@ function CreateProjectModal({ isOpen, onClose, token }) {
     
   };
   
-
 
   const handleSubmitProject = async(e) => {
 
@@ -78,15 +77,11 @@ function CreateProjectModal({ isOpen, onClose, token }) {
     catch(err){
 
       console.log(err)
-
-
-
+      seterrMsg(err.response.data.message)
+      setLoading(false)
 
     }
 
-
-
-    
     onClose();
 
   };
@@ -146,8 +141,18 @@ function CreateProjectModal({ isOpen, onClose, token }) {
 
         </div>
 
-        <button type='submit'>Submit</button>
+        <button type='submit'>
+          {loading ? (
+
+              <AiOutlineLoading3Quarters className="loading-icon" />
+
+              ) : (
+
+                "Submit"
+
+          )}</button>
         <button onClick={onClose}>Cancel</button>
+        {errmsg? <p className="error-msg">{errmsg}</p> : ''}
 
       </form>
     </div>

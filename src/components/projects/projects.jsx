@@ -38,6 +38,11 @@ function Projects (){
 
     const navigate = useNavigate()
 
+    const [loading, setLoading] = useState(false)
+    const [errmsg, setErrmsg] = useState('')
+    const [projects, setProjects] = useState([])
+
+
     useEffect(()=>{
 
         const checkAuth = async()=>{
@@ -59,20 +64,39 @@ function Projects (){
                     if (res.data.type !== 'success') {
 
                         navigate('/login')
-
                     }
                 
-
             }
-
-            
-            
+   
         }
         
         checkAuth()
 
 
     },[navigate])
+
+    useEffect(()=>{
+
+        const fetchProjects = async()=>{
+
+            try{
+
+                
+
+
+
+            }
+
+            catch(err){
+
+
+            }
+        }
+
+
+
+
+    },[])
 
 
 
