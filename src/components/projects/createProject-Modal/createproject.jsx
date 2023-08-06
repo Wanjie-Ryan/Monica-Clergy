@@ -1,39 +1,31 @@
-import React, { useState } from 'react';
-import '../projects.css'
+import React, { useState } from "react";
+import "../projects.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import axios from 'axios'
-import {  AiOutlineLoading3Quarters } from "react-icons/ai";
+import axios from "axios";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 function CreateProjectModal({ isOpen, onClose, token }) {
-
-  const [title, setTitle] = useState('');
-  const [image, setImage] = useState()
-  const [description, setDescription] = useState('');
-  const [loading, setLoading] = useState(false)
-  const [errmsg, seterrMsg] = useState('')
+  const [title, setTitle] = useState("");
+  const [image, setImage] = useState();
+  const [description, setDescription] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [errmsg, seterrMsg] = useState("");
 
   const handleTitleChange = (e) => {
-
     setTitle(e.target.value);
-
   };
 
   const handleDescriptionChange = (e) => {
-    
     setDescription(e.target.value);
-    
   };
-  
 
-  const handleSubmitProject = async(e) => {
+  const handleSubmitProject = async (e) => {
+    e.preventDefault();
 
-    e.preventDefault()
-
-    if(!title || !image ){
-
-      toast.error('Please fill in all the field')
-      return
+    if (!title || !image) {
+      toast.error("Please fill in all the field");
+      return;
     }
 
     const config = {
@@ -42,10 +34,9 @@ function CreateProjectModal({ isOpen, onClose, token }) {
       },
     };
 
-    setLoading(true)
+    setLoading(true);
 
-    try{
-
+    try {
       const formData = new FormData();
       formData.append("file", image);
 
@@ -57,51 +48,41 @@ function CreateProjectModal({ isOpen, onClose, token }) {
       );
 
       const projectData = {
+        title: title,
+        image: imageData.data.secure_url,
+        description: description,
+      };
 
-        title:title,
-        image:imageData.data.secure_url,
-        description:description
-      }
+      const ProjectSubdata = await axios.post(
+        "http://localhost:3005/api/clergy/projects/createproject",
+        projectData,
+        config
+      );
 
-      const ProjectSubdata = await axios.post('http://localhost:3005/api/clergy/projects/createproject',projectData, config)
+      // console.log(ProjectSubdata)
 
-      console.log(ProjectSubdata)
+      toast.success("Project has been created successfully");
 
-      toast.success('Project has been created successfully')
-
-      setLoading(false)
-
-
-    }
-
-    catch(err){
-
-      console.log(err)
-      seterrMsg(err.response.data.message)
-      setLoading(false)
-
+      setLoading(false);
+    } catch (err) {
+      // console.log(err)
+      seterrMsg(err.response.data.message);
+      setLoading(false);
     }
 
     onClose();
-
   };
 
   if (!isOpen) {
-
     return null;
-
   }
 
   return (
-
     <div className="modal">
-
       <form className="modal-content" onSubmit={handleSubmitProject}>
-
         <h2>Create Project</h2>
 
         <div className="modal-input">
-
           <label htmlFor="title">Title:</label>
 
           <input
@@ -111,11 +92,9 @@ function CreateProjectModal({ isOpen, onClose, token }) {
             onChange={handleTitleChange}
             placeholder="Enter project title"
           />
-
         </div>
 
         <div className="modal-input">
-
           <label htmlFor="imageFile">Image:</label>
           <input
             type="file"
@@ -124,13 +103,10 @@ function CreateProjectModal({ isOpen, onClose, token }) {
             onChange={(e) => {
               setImage(e.target.files[0]);
             }}
-           
           />
-          
         </div>
 
         <div className="modal-input">
-
           <label htmlFor="description">Description:</label>
           <textarea
             id="description"
@@ -138,25 +114,19 @@ function CreateProjectModal({ isOpen, onClose, token }) {
             onChange={handleDescriptionChange}
             placeholder="Enter project description (max-length: 50 words)"
           />
-
         </div>
 
-        <button type='submit'>
+        <button type="submit">
           {loading ? (
-
-              <AiOutlineLoading3Quarters className="loading-icon" />
-
-              ) : (
-
-                "Submit"
-
-          )}</button>
+            <AiOutlineLoading3Quarters className="loading-icon" />
+          ) : (
+            "Submit"
+          )}
+        </button>
         <button onClick={onClose}>Cancel</button>
-        {errmsg? <p className="error-msg">{errmsg}</p> : ''}
-
+        {errmsg ? <p className="error-msg">{errmsg}</p> : ""}
       </form>
     </div>
-
   );
 }
 
