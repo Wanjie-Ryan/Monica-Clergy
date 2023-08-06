@@ -4,7 +4,7 @@ import '../projects.css'
 function UpdateProjectModal({ isOpen, onClose }) {
 
   const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
+  const [image, setImage] = useState();
 
   const handleTitleChange = (e) => {
 
@@ -12,12 +12,7 @@ function UpdateProjectModal({ isOpen, onClose }) {
 
   };
 
-  const handleDescriptionChange = (e) => {
-
-    setDescription(e.target.value);
-
-  };
-
+  
   const handleSubmit = () => {
 
     
@@ -53,27 +48,20 @@ function UpdateProjectModal({ isOpen, onClose }) {
 
         </div>
 
+        
         <div className="modal-input">
 
           <label htmlFor="imageFile">Image:</label>
-          <input
-            type="file"
-            id="imageFile"
-            accept="image/*"
-            // onChange={handleImageChange}
-          />
-          
-        </div>
 
-        <div className="modal-input">
-
-          <label htmlFor="description">Description:</label>
-          <textarea
-            id="description"
-            value={description}
-            onChange={handleDescriptionChange}
-            placeholder="Enter project description (max-length: 50 words)"
-          />
+            <input
+              type="file"
+              id="imageFile"
+              accept="image/*"
+              onChange={(e) => {
+                setImage(e.target.files[0]);
+              }}
+            
+            />
 
         </div>
 

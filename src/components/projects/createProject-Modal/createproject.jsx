@@ -30,7 +30,7 @@ function CreateProjectModal({ isOpen, onClose, token }) {
 
     e.preventDefault()
 
-    if(!title || !image || !description){
+    if(!title || !image ){
 
       toast.error('Please fill in all the field')
       return

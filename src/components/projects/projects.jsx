@@ -27,9 +27,12 @@ function Projects (){
         setIsModalOpen(false);
     };
 
+    const [updateprojectId, setupdateprojectId] = useState(null)
     const [updateModalOpen, setupdateModalOpen] = useState(false);
 
-    const UpdateopenModal = () => {
+    const UpdateopenModal = (projectId) => {
+
+        setupdateprojectId(projectId)
         setupdateModalOpen(true);
     };
 
@@ -175,8 +178,8 @@ function Projects (){
 
                                     <div className="up-del">
                                         
-                                        <BsPencil className='up-icon' title='update' onClick={UpdateopenModal}/>
-                                        <RiDeleteBin7Fill className='up-icon' title='delete'/>
+                                        <BsPencil className='up-icon' title='update'  onClick={() => UpdateopenModal(project._id)}/>
+                                        <RiDeleteBin7Fill className='del' title='delete'/>
 
                                     </div>
 
@@ -193,8 +196,6 @@ function Projects (){
                         
                         </div>
                     
-
-
                 </div>
 
 
@@ -203,7 +204,7 @@ function Projects (){
         
         
             <CreateProjectModal isOpen={isModalOpen} onClose={closeModal} token={Cookies.get().clergyToken}/>
-            <UpdateProjectModal isOpen ={updateModalOpen} onClose ={UpdatecloseModal}/>
+            <UpdateProjectModal isOpen ={updateModalOpen} onClose ={UpdatecloseModal} projectId={updateprojectId}/>
         
         
         </>
