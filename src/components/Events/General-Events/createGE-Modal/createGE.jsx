@@ -33,6 +33,8 @@ function CreateProjectModal({ isOpen, onClose }) {
   const currentDate = new Date().toISOString().slice(0, 10);
   console.log(currentDate)
 
+  console.log(acDate)
+
   const handleDescriptionChange = (e) => {
 
     setDescription(e.target.value);
