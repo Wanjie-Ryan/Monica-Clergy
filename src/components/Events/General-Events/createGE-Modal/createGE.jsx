@@ -24,6 +24,15 @@ function CreateProjectModal({ isOpen, onClose }) {
     setAcDate(e.target.value)
   }
 
+  const handleRegDate = (e)=>{
+
+    setRegDate(e.target.value)
+
+  }
+
+  const currentDate = new Date().toISOString().slice(0, 10);
+  console.log(currentDate)
+
   const handleDescriptionChange = (e) => {
 
     setDescription(e.target.value);
@@ -84,8 +93,9 @@ function CreateProjectModal({ isOpen, onClose }) {
           <input
             type="date"
             id="title"
-            value={title}
-            onChange={handleTitleChange}
+            value={acDate}
+            onChange={handleActualDate}
+            min={currentDate}
             placeholder="Enter project title"
           />
 
@@ -98,8 +108,9 @@ function CreateProjectModal({ isOpen, onClose }) {
           <input
             type="date"
             id="title"
-            value={title}
-            onChange={handleTitleChange}
+            value={regDate}
+            onChange={handleRegDate}
+            min={currentDate}
             placeholder="Enter project title"
           />
 
