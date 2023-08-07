@@ -4,6 +4,7 @@ import {AiFillPrinter} from 'react-icons/ai'
 import axios from 'axios'
 import Cookies from 'js-cookie'
 import {  AiOutlineLoading3Quarters } from "react-icons/ai";
+import { Document, Page, Text, View, StyleSheet, PDFDownloadLink } from '@react-pdf/renderer';
 
 
 function FeedBack (){
@@ -37,7 +38,7 @@ function FeedBack (){
 
             catch(err){
 
-                console.log(err)
+                // console.log(err)
                 setLoading(false)
                 setErrMsg('Sorry could not be able to get feedbacks')
             }
@@ -48,12 +49,7 @@ function FeedBack (){
 
     },[])
 
-    const tableData = [
-        { id: 1, name: 'John Doe', email: 'john@example.com', message: 'Hello, world!' },
-        { id: 2, name: 'Jane Smith', email: 'jane@example.com', message: 'Nice project!' },
-        // Add more data as needed
-      ];
-
+    
     return(
 
         <>
@@ -72,7 +68,7 @@ function FeedBack (){
                             <thead>
 
                                 <tr>
-                                    <th>ID</th>
+                                    <th>No.</th>
                                     <th>Name</th>
                                     <th>Email</th>
                                     <th>Message</th>
@@ -80,21 +76,35 @@ function FeedBack (){
 
                             </thead>
 
-                            {fb.map((response, index)=>(
 
-                                <tbody>
+                            {Loading ? (
 
-                                    <tr key={index}>
-                                    <td>{response.id}</td>
-                                    <td>{response.name}</td>
-                                    <td>{response.email}</td>
-                                    <td>{response.message}</td>
+                                <AiOutlineLoading3Quarters className="loading-icon" />
+
+                                ) : fb.length === 0 ? (
+
+                                <tr>
+
+                                    <td colSpan="4">No feedbacks available</td>
+
+                                </tr>
+
+                                ) : (
+
+                                fb.map((feedback, index) => (
+
+                                    <tr key={feedback.id}>
+
+                                    <td>{index + 1}</td>
+                                    <td>{feedback.name}</td>
+                                    <td>{feedback.email}</td>
+                                    <td>{feedback.message}</td>
+
                                     </tr>
-                                    
-                                </tbody>
+                                ))
 
-                             ))
-                            }
+                            )}
+                            {errMsg && <p className='error-msg'>{errMsg}</p>}
 
                         </table>
 
