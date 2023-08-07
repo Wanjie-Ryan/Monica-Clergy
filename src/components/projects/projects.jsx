@@ -148,6 +148,8 @@ function Projects (){
 
     const [searchText, setSearchText] = useState()
     const[searchErr, setsearchErr] = useState()
+    const [searchProjects, setSearchProjects] = useState([])
+    const [searchMsg, setSearchMsg] = useState()
 
     const handleSearchText = (e)=>{
 
@@ -156,6 +158,7 @@ function Projects (){
 
     const Search = async()=>{
 
+        setLoading(true)
         try{
 
             const Searchtoken =Cookies.get().clergyToken
@@ -165,18 +168,32 @@ function Projects (){
 
             console.log(searchProject.data)
 
+            setSearchProjects(searchProject.data.foundProjects)
+            setSearchMsg(searchProject.data.msg)
 
+            setLoading(false)
 
+        
         }
 
         catch(err){
 
             console.log(err)
-            setsearchErr('There seems to be an error while searching for your item')
+            
+            setsearchErr('There project you are searching for does not exist')
+
+            setLoading(false)
         }
 
 
     }
+
+    const handleKeyDown = (event) => {
+
+        if (event.key === 'Enter') {
+            Search();
+        }
+    };
 
 
 
@@ -194,7 +211,7 @@ function Projects (){
                         <div className="search">
 
 
-                            <input type='text' placeholder='search by name of project' value={searchText} onChange={handleSearchText}/>
+                            <input type='text' placeholder='search by name of project' value={searchText} onChange={handleSearchText} onKeyDown={handleKeyDown}/>
 
                             <BsSearch className='search-icon' onClick ={Search}/>
 
@@ -210,51 +227,87 @@ function Projects (){
 
                     </div>
 
+                    {loading ? (
+
+                            <AiOutlineLoading3Quarters className="loading-icon" />
+
+                        ) : (
+
+                            <>
+                                {searchProjects.length > 0 ? (
+
+                                    <div className="actual-projects">
+
+                                        {searchProjects.map((projectsearch, index) => (
+
+                                            <>
+                                                <p className='project-desc'>{searchMsg}</p>
+                                                <div className="project-img" key={index}>
+                                                    
+                                                    <img src={projectsearch.image} className="img-proj" />
+
+                                                    <div className="img-text">
+                                                        <p className='project-desc'>{projectsearch.title}</p>
+                                                    </div>
+                                                </div>
+                                            </>
+                                        ))}
+
+                                    </div>
+                                ):''}
+                            </>
+                        )}
+
+                        {searchErr && <p className="error-msg">{searchErr}</p>}
 
 
-                        <div className="actual-projects">
-
-                            {
-                                loading ? (
-
-                                    <AiOutlineLoading3Quarters className="loading-icon" />
-                                ):
-
-                                projects.length === 0 ?(
-
-                                    <p>No projects Have been found</p>
-                                ):(
-
-                                    projects.map((project,index)=>(
 
 
-                                <div className="project-img" key ={index}>
+                            <div className="actual-projects">
 
-                                    <img src ={project.image} alt='church' className='img-proj'/>
+                                {
+                                    loading ? (
 
-                                    <div className="img-text">
+                                        <AiOutlineLoading3Quarters className="loading-icon" />
+                                    ):
 
-                                        <p className='project-desc'>{project.title}</p>
+                                    projects.length === 0 ?(
+
+                                        <p>No projects Have been found</p>
+                                    ):(
+
+                                        projects.map((project,index)=>(
+
+
+                                    <div className="project-img" key ={index}>
+
+                                        <img src ={project.image} alt='church' className='img-proj'/>
+
+                                        <div className="img-text">
+
+                                            <p className='project-desc'>{project.title}</p>
+
+                                        </div>
+
+                                        <div className="up-del">
+                                            
+                                            <BsPencil className='up-icon' title='update'  onClick={() => UpdateopenModal(project._id)}/>
+                                            <RiDeleteBin7Fill className='del' title='delete' onClick={()=>handleDelete(project._id)}/>
+
+                                        </div>
+
+                                        {/* <p>{projects.description}</p> */}
 
                                     </div>
 
-                                    <div className="up-del">
-                                        
-                                        <BsPencil className='up-icon' title='update'  onClick={() => UpdateopenModal(project._id)}/>
-                                        <RiDeleteBin7Fill className='del' title='delete' onClick={()=>handleDelete(project._id)}/>
+                                    ))
 
-                                    </div>
+                                )
+                                }
 
-                                    {/* <p>{projects.description}</p> */}
-
-                                </div>
-
-                                ))
-
-                            )
-                            }
-
-                        </div>
+                            </div>
+                        
+                        
                     
                 </div>
 
