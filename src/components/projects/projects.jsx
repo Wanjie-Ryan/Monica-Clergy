@@ -146,6 +146,38 @@ function Projects (){
         }
     }
 
+    const [searchText, setSearchText] = useState()
+    const[searchErr, setsearchErr] = useState()
+
+    const handleSearchText = (e)=>{
+
+        setSearchText(e.target.value)
+    }
+
+    const Search = async()=>{
+
+        try{
+
+            const Searchtoken =Cookies.get().clergyToken
+
+
+            const searchProject =  await axios.get(`http://localhost:3005/api/clergy/projects/searchproject?searchTerm=${searchText}`,{headers:{Authorization:`Bearer ${Searchtoken}`}})
+
+            console.log(searchProject.data)
+
+
+
+        }
+
+        catch(err){
+
+            console.log(err)
+            setsearchErr('There seems to be an error while searching for your item')
+        }
+
+
+    }
+
 
 
 
@@ -162,9 +194,9 @@ function Projects (){
                         <div className="search">
 
 
-                            <input type='text' placeholder='search by name of project'/>
+                            <input type='text' placeholder='search by name of project' value={searchText} onChange={handleSearchText}/>
 
-                            <BsSearch className='search-icon'/>
+                            <BsSearch className='search-icon' onClick ={Search}/>
 
                         </div>
 
@@ -222,8 +254,6 @@ function Projects (){
                             )
                             }
 
-                            
-                        
                         </div>
                     
                 </div>
