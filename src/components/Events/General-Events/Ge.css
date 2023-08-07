@@ -39,7 +39,9 @@
     /* top:200px; */
     /* left:180px; */
     bottom:30px;
-    right:60px;
+    left:10px;
+    width:120px;
+    /* right:60px; */
     text-decoration:none;
     background-color: #693d56;
     color:white;

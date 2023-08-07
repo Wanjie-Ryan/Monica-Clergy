@@ -79,9 +79,6 @@ function GeneralEvents (){
 
                             </div>
 
-                            
-
-                            
                         
                         </div>
 
