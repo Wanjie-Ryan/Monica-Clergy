@@ -20,6 +20,17 @@ function FeedBack (){
 
             try{
 
+                const token =Cookies.get().clergyToken
+
+                const Allfeedbacks = await axios.get('http://localhost:3005/api/user/allfeedbacks', {headers:{
+                    Authorization:`Bearer ${token}`
+                }})
+
+                // console.log(Allfeedbacks.data.getFeedbacks)
+
+                setFb(Allfeedbacks.data.getFeedbacks)
+
+                setLoading(false)
 
 
             }
@@ -28,6 +39,7 @@ function FeedBack (){
 
                 console.log(err)
                 setLoading(false)
+                setErrMsg('Sorry could not be able to get feedbacks')
             }
         }
 
@@ -55,6 +67,7 @@ function FeedBack (){
                     <div className="table-container">
 
                         <AiFillPrinter className='printer'/>
+
                         <table className="custom-table">
                             <thead>
 
@@ -67,17 +80,21 @@ function FeedBack (){
 
                             </thead>
 
-                            <tbody>
+                            {fb.map((response, index)=>(
 
-                                {tableData.map((dataItem) => (
-                                    <tr key={dataItem.id}>
-                                    <td>{dataItem.id}</td>
-                                    <td>{dataItem.name}</td>
-                                    <td>{dataItem.email}</td>
-                                    <td>{dataItem.message}</td>
+                                <tbody>
+
+                                    <tr key={index}>
+                                    <td>{response.id}</td>
+                                    <td>{response.name}</td>
+                                    <td>{response.email}</td>
+                                    <td>{response.message}</td>
                                     </tr>
-                                ))}
-                            </tbody>
+                                    
+                                </tbody>
+
+                             ))
+                            }
 
                         </table>
 
