@@ -49,6 +49,67 @@ function FeedBack (){
 
     },[])
 
+    //PDF
+
+    const styles = StyleSheet.create({
+
+        page: {
+        padding: 20,
+        },
+
+        heading: {
+        fontSize: 18,
+        marginBottom: 10,
+        },
+
+        table: {
+        display: 'table',
+        width: '100%',
+        borderStyle: 'solid',
+        borderWidth: 1,
+        borderRightWidth: 0,
+        borderBottomWidth: 0,
+        },
+
+        tableRow: {
+        margin: 'auto',
+        flexDirection: 'row',
+        },
+
+        tableCell: {
+        margin: 'auto',
+        fontSize: 12,
+        padding: 5,
+        borderStyle: 'solid',
+        borderWidth: 1,
+        borderLeftWidth: 0,
+        borderTopWidth: 0,
+        },
+        
+  });
+
+  const PDFDocument = (
+    <Document>
+      <Page size="A4" style={styles.page}>
+        <View>
+          <Text style={styles.heading}>Feedback from the Congregants</Text>
+        </View>
+        <View style={styles.table}>
+          {fb.map((feedback, index) => (
+            <View style={styles.tableRow} key={feedback.id}>
+              <View style={styles.tableCell}>{index + 1}</View>
+              <View style={styles.tableCell}>{feedback.name}</View>
+              <View style={styles.tableCell}>{feedback.email}</View>
+              <View style={styles.tableCell}>{feedback.message}</View>
+            </View>
+          ))}
+        </View>
+      </Page>
+    </Document>
+  );
+
+
+
     
     return(
 
