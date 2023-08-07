@@ -1,9 +1,16 @@
 import React, { useState } from 'react';
-// import '../projects.css'
+import { DateRange } from 'react-date-range';
+import 'react-date-range/dist/styles.css'; // main css file
+import 'react-date-range/dist/theme/default.css';
+
+
 
 function CreateProjectModal({ isOpen, onClose }) {
 
   const [title, setTitle] = useState('');
+  const [image, setImage] = useState([])
+  const [acDate, setAcDate] = useState()
+  const [regDate, setRegDate] = useState()
   const [description, setDescription] = useState('');
 
   const handleTitleChange = (e) => {
@@ -11,6 +18,11 @@ function CreateProjectModal({ isOpen, onClose }) {
     setTitle(e.target.value);
 
   };
+
+  const handleActualDate= (e)=>{
+
+    setAcDate(e.target.value)
+  }
 
   const handleDescriptionChange = (e) => {
 
