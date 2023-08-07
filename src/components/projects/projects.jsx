@@ -11,7 +11,8 @@ import axios from 'axios'
 import Cookies from 'js-cookie'
 import { useNavigate } from 'react-router-dom'
 import {  AiOutlineLoading3Quarters } from "react-icons/ai";
-
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Projects (){
 
@@ -103,7 +104,7 @@ function Projects (){
 
             catch(err){
 
-                console.log(err)
+                // console.log(err)
 
                 setErrmsg('There was an error while fetching the data, refresh the page and try again')
 
@@ -116,6 +117,35 @@ function Projects (){
 
 
     },[])
+
+    const handleDelete = async(projectId)=>{
+
+        setLoading(true)
+
+        try{
+ 
+                const Deletetoken =Cookies.get().clergyToken
+                
+                const deleteProject = await axios.delete(`http://localhost:3005/api/clergy/projects/deleteproject/${projectId}`, {headers:{
+                Authorization:`Bearer ${Deletetoken}`
+            }})
+
+            toast.success('Project was deleted successfully');
+
+
+              setLoading(false)
+        
+        }
+
+
+        catch(err){
+
+            // console.log(err)
+            setErrmsg('Sorry could not be able to delete your project')
+            setLoading(false)
+        }
+    }
+
 
 
 
@@ -179,7 +209,7 @@ function Projects (){
                                     <div className="up-del">
                                         
                                         <BsPencil className='up-icon' title='update'  onClick={() => UpdateopenModal(project._id)}/>
-                                        <RiDeleteBin7Fill className='del' title='delete'/>
+                                        <RiDeleteBin7Fill className='del' title='delete' onClick={()=>handleDelete(project._id)}/>
 
                                     </div>
 
