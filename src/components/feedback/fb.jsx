@@ -1,10 +1,40 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import './fb.css'
 import {AiFillPrinter} from 'react-icons/ai'
-
+import axios from 'axios'
+import Cookies from 'js-cookie'
+import {  AiOutlineLoading3Quarters } from "react-icons/ai";
 
 
 function FeedBack (){
+
+    const [fb, setFb] = useState([])
+    const [errMsg, setErrMsg] = useState()
+    const [Loading, setLoading] = useState(false);
+
+    useEffect(()=>{
+
+        const getFeedbacks = async()=>{
+
+            setLoading(true)
+
+            try{
+
+
+
+            }
+
+            catch(err){
+
+                console.log(err)
+                setLoading(false)
+            }
+        }
+
+        getFeedbacks()
+
+
+    },[])
 
     const tableData = [
         { id: 1, name: 'John Doe', email: 'john@example.com', message: 'Hello, world!' },
