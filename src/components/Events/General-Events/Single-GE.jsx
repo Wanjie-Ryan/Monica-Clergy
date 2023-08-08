@@ -1,10 +1,13 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import './SingleGE.css'
 import generalEvents from '../../../Assets/Events/general_events.jpg'
 // import EventsRegModal from '../Events-Modal/Event-Reg-Modal'
 import {RiDeleteBin7Fill} from 'react-icons/ri'
 import {BsPencil} from 'react-icons/bs'
 import UpdateGenModal from '../General-Events/updateProject-Modal/updateProject'
+import axios from 'axios'
+import {useParams} from 'react-router-dom'
+import { AiOutlineLoading3Quarters} from "react-icons/ai";
 
 
 function SingleGE (){
@@ -22,6 +25,50 @@ function SingleGE (){
 
     }; 
 
+    const [Loading, setLoading] = useState(false)
+    const [singGe, setSingGe] = useState()
+    const [errMsg, seterrMsg] = useState()
+    const {id} = useParams()
+    console.log(singGe)
+
+    useEffect(()=>{
+
+        const SingleGe = async()=>{
+
+            try{
+
+                setLoading(true)
+
+                const singleGeEvent = await axios.get(`http://localhost:3005/api/clergy/events/singleevent/${id}`)
+
+                const singleEve = singleGeEvent.data.singleEvent
+
+                setSingGe(singleEve)
+
+                setLoading(false)
+
+
+            }
+
+            catch(err){
+
+                console.log(err)
+                seterrMsg('Cannot fetch Data at this time')
+                setLoading(false)
+
+            }
+
+
+
+
+        }
+
+        SingleGe()
+
+
+
+    },[id])
+
     return(
 
         <>
@@ -29,28 +76,41 @@ function SingleGE (){
 
             <section className="single-Events">
 
-                <div className="single-events-container">
+                {Loading ? (
 
-                    <div className='img-cont'>
+                    <AiOutlineLoading3Quarters className="loading-icon" />
 
-                        <img src ={generalEvents}  alt ='single-image' className='single-image-event'/>
+                ):(
+                    <>
 
+                            <div className="single-events-container">
 
-                    </div>
+                                <div className='img-cont'>
 
-                    <p className='events-title-single'>Event Title:</p>
-                    <p className='events-title-single'>Event Description:</p>
-
-                    <div className="up-del-single">
-                                
-                        <BsPencil className='up-icon' title='update' onClick ={openEventModal} />
-                        <RiDeleteBin7Fill className='up-icon' title='delete'/>
+                                    <img src ={singGe.image}  alt ='single-image' className='single-image-event'/>
 
 
-                    </div>
+                                </div>
+
+                                <p className='events-title-single'>Event Title:  <span className="events-desc-p-">{singGe.title} </span></p>
+                                <p className='events-title-single'>Event Description:  <span className="events-desc-p-">{singGe.description}</span></p>
+
+                                <div className="up-del-single">
+                                            
+                                    <BsPencil className='up-icon--sing-update' title='update' onClick ={openEventModal} />
+                                    <RiDeleteBin7Fill className='up-icon--sing' title='delete'/>
 
 
-                </div>
+                                </div>
+
+
+                             </div>
+                      
+
+                    </>
+
+                )
+                }
 
 
             </section>
