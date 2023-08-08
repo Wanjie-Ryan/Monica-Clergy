@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 // import '../projects.css'
 
-function UpdateProjectModal({ isOpen, onClose }) {
+function UpdateProjectModal({ isOpen, onClose,eventToken }) {
 
   const [title, setTitle] = useState('');
+  const [image, setImage] = useState()
   const [description, setDescription] = useState('');
 
   const handleTitleChange = (e) => {
@@ -18,7 +19,15 @@ function UpdateProjectModal({ isOpen, onClose }) {
 
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+
+    e.preventdefault()
+
+    const config = {
+      headers: {
+        Authorization: `Bearer ${eventToken}`,
+      },
+    };
 
     
     onClose();
@@ -60,7 +69,9 @@ function UpdateProjectModal({ isOpen, onClose }) {
             type="file"
             id="imageFile"
             accept="image/*"
-            // onChange={handleImageChange}
+            onChange={(e) => {
+              setImage(e.target.files[0]);
+            }}
           />
           
         </div>

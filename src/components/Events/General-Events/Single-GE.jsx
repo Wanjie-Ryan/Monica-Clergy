@@ -8,6 +8,8 @@ import UpdateGenModal from '../General-Events/updateProject-Modal/updateProject'
 import axios from 'axios'
 import {useParams} from 'react-router-dom'
 import { AiOutlineLoading3Quarters} from "react-icons/ai";
+import Cookies from 'js-cookie'
+
 
 
 function SingleGE (){
@@ -83,28 +85,33 @@ function SingleGE (){
                 ):(
                     <>
 
-                            <div className="single-events-container">
+                            {singGe? (
+                                <div className="single-events-container">
 
-                                <div className='img-cont'>
+                                    <div className='img-cont'>
 
-                                    <img src ={singGe.image}  alt ='single-image' className='single-image-event'/>
-
-
-                                </div>
-
-                                <p className='events-title-single'>Event Title:  <span className="events-desc-p-">{singGe.title} </span></p>
-                                <p className='events-title-single'>Event Description:  <span className="events-desc-p-">{singGe.description}</span></p>
-
-                                <div className="up-del-single">
-                                            
-                                    <BsPencil className='up-icon--sing-update' title='update' onClick ={openEventModal} />
-                                    <RiDeleteBin7Fill className='up-icon--sing' title='delete'/>
+                                        <img src ={singGe.image}  alt ='single-image' className='single-image-event'/>
 
 
-                                </div>
+                                    </div>
+
+                                    <p className='events-title-single'>Event Title:  <span className="events-desc-p-">{singGe.title} </span></p>
+                                    <p className='events-title-single'>Event Description:  <span className="events-desc-p-">{singGe.description}</span></p>
+
+                                    <div className="up-del-single">
+                                                
+        
+                                        <BsPencil className='up-icon--sing-update' title='update' onClick ={openEventModal} eventToken= {Cookies.get().clergyToken} />
+                                        <RiDeleteBin7Fill className='up-icon--sing' title='delete'/>
 
 
-                             </div>
+                                    </div>
+
+
+                                 </div>
+                            ):(
+                                <p>{errMsg}</p>
+                            )}
                       
 
                     </>
