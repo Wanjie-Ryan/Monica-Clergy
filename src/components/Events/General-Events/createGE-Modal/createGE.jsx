@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import { DateRange } from 'react-date-range';
-import 'react-date-range/dist/styles.css'; // main css file
-import 'react-date-range/dist/theme/default.css';
-
+// import 'react-date-range/dist/styles.css'; 
+// import 'react-date-range/dist/theme/default.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import axios from "axios";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 
 function CreateProjectModal({ isOpen, onClose }) {
@@ -31,9 +34,9 @@ function CreateProjectModal({ isOpen, onClose }) {
   }
 
   const currentDate = new Date().toISOString().slice(0, 10);
-  console.log(currentDate)
+  // console.log(currentDate)
 
-  console.log(acDate)
+  // console.log(acDate)
 
   const handleDescriptionChange = (e) => {
 
