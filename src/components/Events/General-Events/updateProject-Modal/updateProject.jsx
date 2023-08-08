@@ -1,11 +1,16 @@
 import React, { useState } from 'react';
 // import '../projects.css'
+import axios from 'axios'
+
+
 
 function UpdateProjectModal({ isOpen, onClose,eventToken }) {
 
   const [title, setTitle] = useState('');
   const [image, setImage] = useState()
   const [description, setDescription] = useState('');
+  const [loading, setLoading]= useState(false)
+  const [errMsg, seterrMsg] = useState()
 
   const handleTitleChange = (e) => {
 
@@ -19,7 +24,7 @@ function UpdateProjectModal({ isOpen, onClose,eventToken }) {
 
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
 
     e.preventdefault()
 
@@ -28,6 +33,41 @@ function UpdateProjectModal({ isOpen, onClose,eventToken }) {
         Authorization: `Bearer ${eventToken}`,
       },
     };
+
+    try{
+
+      setLoading(true)
+
+      const formData = new FormData();
+      formData.append("file", image);
+
+      formData.append("upload_preset", "g1e9sjte");
+
+      const imageData = await axios.post(
+        "https://api.cloudinary.com/v1_1/djgk2k4sw/image/upload",
+        formData
+      );
+
+      const GEUpdateData = {
+        title: title,
+        image: imageData.data.secure_url,
+        description: description,
+      };
+
+      const GEventsUpdateData = await axios.patch(
+        `http://localhost:3005/api/clergy/events/updateevent/${}`,
+        GEUpdateData,
+        config
+      );
+
+
+    }
+
+    catch(err){
+
+      console.log(err)
+
+    }
 
     
     onClose();

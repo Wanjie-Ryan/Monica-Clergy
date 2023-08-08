@@ -101,9 +101,9 @@ function SingleGE (){
                                     <div className="up-del-single">
                                                 
         
-                                        <BsPencil className='up-icon--sing-update' title='update' onClick ={openEventModal} eventToken= {Cookies.get().clergyToken} />
+                                        <BsPencil className='up-icon--sing-update' title='update' onClick ={()=>openEventModal(singGe._id)} eventToken= {Cookies.get().clergyToken} />
                                         <RiDeleteBin7Fill className='up-icon--sing' title='delete'/>
-
+                                        
 
                                     </div>
 
