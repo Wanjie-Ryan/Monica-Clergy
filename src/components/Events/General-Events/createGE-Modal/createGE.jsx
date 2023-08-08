@@ -89,9 +89,9 @@ function CreateProjectModal({ isOpen, onClose }) {
         { headers: { Authorization: `Bearer ${token}` } }
       );
 
-      console.log(CreateGEdata)
+      // console.log(CreateGEdata)
 
-      toast.success("Project has been created successfully");
+      toast.success("General Event has been created successfully");
 
       setLoading(false);
 
@@ -195,8 +195,14 @@ function CreateProjectModal({ isOpen, onClose }) {
 
         </div>
 
-        <button onClick={handleSubmit}>Submit</button>
+        <button onClick={handleSubmit}>{loading ? (
+            <AiOutlineLoading3Quarters className="loading-icon" />
+          ) : (
+            "Submit"
+          )}</button>
         <button onClick={onClose}>Cancel</button>
+        {errMsg ? <p className="error-msg">{errMsg}</p> : ""}
+
 
       </form>
     </div>
