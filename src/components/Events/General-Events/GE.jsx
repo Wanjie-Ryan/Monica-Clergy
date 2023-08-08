@@ -121,13 +121,13 @@ function GeneralEvents() {
                           </Link>
                         </div>
                         <p className="event-title">
-                          Event Title: {event.title}
+                          Event Title: <span className='events-desc-p-'>{event.title}</span>
                         </p>
                         <p className="event-title">
-                          Event Description: {event.description}
+                          Event Description: <span className='events-desc-p-'>{event.description}</span>
                         </p>
-                        <p>Actual Date for Event:{event.ActualDate}</p>
-                        <p>Registration Deadline:{event.DeadlineDate}</p>
+                        <p>Actual Date for Event:{event.ActualDate.slice(0, 10)}</p>
+                        <p>Registration Deadline:{event.ActualDate.slice(0, 10)}</p>
                       </div>
                     ))}
                   </div>
@@ -163,13 +163,13 @@ function GeneralEvents() {
                           </Link>
                         </div>
                         <p className="event-title">
-                          Event Title: {event.title}
+                          Event Title: <span className='events-desc-p-'>{event.title}</span>
                         </p>
                         <p className="event-title">
-                          Event Description: {event.description}
+                          Event Description: <span className='events-desc-p-'>{event.description}</span>
                         </p>
-                        <p>Actual Date for Event:{event.ActualDate}</p>
-                        <p>Registration Deadline:{event.DeadlineDate}</p>
+                        <p>Actual Date for Event:<span className='actual-dates'>{event.ActualDate.slice(0, 10)}</span></p>
+                        <p>Registration Deadline:<span className='reg-dates'>{event.ActualDate.slice(0, 10)}</span></p>
                       </div>
                     ))}
                   </div>
@@ -205,13 +205,13 @@ function GeneralEvents() {
                           </Link>
                         </div>
                         <p className="event-title">
-                          Event Title: {event.title}
+                          Event Title: <span className='events-desc-p-'>{event.title}</span>
                         </p>
                         <p className="event-title">
-                          Event Description: {event.description}
+                          Event Description: <span className='events-desc-p-'>{event.description}</span>
                         </p>
-                        <p>Actual Date for Event:{event.ActualDate}</p>
-                        <p>Registration Deadline:{event.DeadlineDate}</p>
+                        <p>Actual Date for Event:<span className='actual-dates'>{event.ActualDate.slice(0, 10)}</span></p>
+                        <p>Registration Deadline:<span className='reg-dates'>{event.ActualDate.slice(0, 10)}</span></p>
                       </div>
                     ))}
                   </div>
