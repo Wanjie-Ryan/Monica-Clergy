@@ -10,7 +10,7 @@ import UpdateProjectModal from "../projects/updateProject-Modal/updateProject";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
-import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import { AiOutlineLoading3Quarters} from "react-icons/ai";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -188,9 +188,13 @@ function Projects() {
           </div>
 
           {loading ? (
+
             <AiOutlineLoading3Quarters className="loading-icon" />
+
           ) : (
+
             <>
+            
               {searchProjects.length > 0 ? (
                 <div className="actual-projects">
                   {searchProjects.map((projectsearch, index) => (
