@@ -6,6 +6,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import Cookies from "js-cookie";
 
 
 function CreateProjectModal({ isOpen, onClose }) {
@@ -15,6 +16,8 @@ function CreateProjectModal({ isOpen, onClose }) {
   const [acDate, setAcDate] = useState()
   const [regDate, setRegDate] = useState()
   const [description, setDescription] = useState('');
+  const [loading, setLoading] = useState(false)
+  const [errMsg, setErrMsg]= useState()
 
   const handleTitleChange = (e) => {
 
@@ -44,9 +47,64 @@ function CreateProjectModal({ isOpen, onClose }) {
 
   };
 
-  const handleSubmit = () => {
 
-    
+
+  const handleSubmit = async(e) => {
+
+    e.preventDefault()
+
+    if (!title || !image || !acDate || !regDate || !description) {
+
+      toast.error("Please fill in all the field");
+      return;
+    }
+
+    setLoading(true)
+
+    try{
+
+      const token = Cookies.get().clergyToken;
+
+      const formData = new FormData();
+      formData.append("file", image);
+
+      formData.append("upload_preset", "g1e9sjte");
+
+      const imageData = await axios.post(
+        "https://api.cloudinary.com/v1_1/djgk2k4sw/image/upload",
+        formData
+      );
+
+      const GEData = {
+        title: title,
+        image: imageData.data.secure_url,
+        ActualDate:acDate,
+        DeadlineDate:regDate,
+        description: description,
+      };
+
+      const CreateGEdata = await axios.post(
+        "http://localhost:3005/api/clergy/events/createevent",
+        GEData,
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
+
+      console.log(CreateGEdata)
+
+      toast.success("Project has been created successfully");
+
+      setLoading(false);
+
+    }
+
+
+    catch(err){
+
+      // console.log(err)
+      setErrMsg('Sorry, could not be able to create your project')
+      setLoading(false)
+    }
+
     onClose();
 
   };
@@ -61,7 +119,7 @@ function CreateProjectModal({ isOpen, onClose }) {
 
     <div className="modal">
 
-      <div className="modal-content">
+      <form className="modal-content" onSubmit ={handleSubmit}>
 
         <h2>Create General Event</h2>
 
@@ -86,7 +144,9 @@ function CreateProjectModal({ isOpen, onClose }) {
             type="file"
             id="imageFile"
             accept="image/*"
-            // onChange={handleImageChange}
+            onChange={(e) => {
+              setImage(e.target.files[0]);
+            }}
           />
           
         </div>
@@ -138,7 +198,7 @@ function CreateProjectModal({ isOpen, onClose }) {
         <button onClick={handleSubmit}>Submit</button>
         <button onClick={onClose}>Cancel</button>
 
-      </div>
+      </form>
     </div>
 
   );
