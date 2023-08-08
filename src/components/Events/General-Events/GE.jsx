@@ -29,6 +29,23 @@ function GeneralEvents() {
   console.log(upcomingEvents);
   console.log(pastEvents);
 
+  function formatCountdown(deadlineDate) {
+    const deadline = new Date(deadlineDate);
+    const currentTime = new Date();
+    const timeDifference = deadline - currentTime;
+
+    const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+    const hours = Math.floor(
+      (timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+    );
+    const minutes = Math.floor(
+      (timeDifference % (1000 * 60 * 60)) / (1000 * 60)
+    );
+    const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
+    return `${days}d ${hours}h ${minutes}m ${seconds}s`;
+  }
+
   useEffect(() => {
     const FetchGenEvents = async () => {
       try {
@@ -121,13 +138,19 @@ function GeneralEvents() {
                           </Link>
                         </div>
                         <p className="event-title">
-                          Event Title: <span className='events-desc-p-'>{event.title}</span>
+                          Event Title:{" "}
+                          <span className="events-desc-p-">{event.title}</span>
                         </p>
                         <p className="event-title">
-                          Event Description: <span className='events-desc-p-'>{event.description}</span>
+                          Event Description:{" "}
+                          <span className="events-desc-p-">
+                            {event.description}
+                          </span>
                         </p>
-                        <p>Actual Date for Event:{event.ActualDate.slice(0, 10)}</p>
-                        <p>Registration Deadline:{event.ActualDate.slice(0, 10)}</p>
+                        <p>
+                          Actual Date for Event:{event.ActualDate.slice(0, 10)}
+                        </p>
+                        {/* <p>Registration Deadline:{event.ActualDate.slice(0, 10)}</p> */}
                       </div>
                     ))}
                   </div>
@@ -163,13 +186,28 @@ function GeneralEvents() {
                           </Link>
                         </div>
                         <p className="event-title">
-                          Event Title: <span className='events-desc-p-'>{event.title}</span>
+                          Event Title:{" "}
+                          <span className="events-desc-p-">{event.title}</span>
                         </p>
                         <p className="event-title">
-                          Event Description: <span className='events-desc-p-'>{event.description}</span>
+                          Event Description:{" "}
+                          <span className="events-desc-p-">
+                            {event.description}
+                          </span>
                         </p>
-                        <p>Actual Date for Event:<span className='actual-dates'>{event.ActualDate.slice(0, 10)}</span></p>
-                        <p>Registration Deadline:<span className='reg-dates'>{event.ActualDate.slice(0, 10)}</span></p>
+                        <p>
+                          Actual Date for Event:
+                          <span className="actual-dates">
+                            {event.ActualDate.slice(0, 10)}
+                          </span>
+                        </p>
+                        <p className="event-title">
+                          Registration Deadline:{" "}
+                          <span className="event-deadline">
+                            {event.DeadlineDate.slice(0, 10)} (
+                            {formatCountdown(event.DeadlineDate)})
+                          </span>
+                        </p>
                       </div>
                     ))}
                   </div>
@@ -205,20 +243,27 @@ function GeneralEvents() {
                           </Link>
                         </div>
                         <p className="event-title">
-                          Event Title: <span className='events-desc-p-'>{event.title}</span>
+                          Event Title:{" "}
+                          <span className="events-desc-p-">{event.title}</span>
                         </p>
                         <p className="event-title">
-                          Event Description: <span className='events-desc-p-'>{event.description}</span>
+                          Event Description:{" "}
+                          <span className="events-desc-p-">
+                            {event.description}
+                          </span>
                         </p>
-                        <p>Actual Date for Event:<span className='actual-dates'>{event.ActualDate.slice(0, 10)}</span></p>
-                        <p>Registration Deadline:<span className='reg-dates'>{event.ActualDate.slice(0, 10)}</span></p>
+                        <p>
+                          Actual Date for Event:
+                          <span className="actual-dates">
+                            {event.ActualDate.slice(0, 10)}
+                          </span>
+                        </p>
+                        {/* <p>Registration Deadline:<span className='reg-dates'>{event.ActualDate.slice(0, 10)}</span></p> */}
                       </div>
                     ))}
                   </div>
                 ) : (
-                  <p className="current-events-p">
-                    There are no current events
-                  </p>
+                  <p className="current-events-p">There are no Past events</p>
                 )}
               </>
             )}

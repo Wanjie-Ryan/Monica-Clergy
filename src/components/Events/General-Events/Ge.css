@@ -135,12 +135,21 @@
 
   font-size:19px;
   font-weight:600;
-  color: rgb(61, 61, 126);
+  color: #0d71f0;
   margin-left:5px;
   
 }
 
 .reg-dates{
+
+  font-size:19px;
+  font-weight:600;
+  color: red;
+  margin-left:5px;
+
+}
+
+.event-deadline{
 
   font-size:19px;
   font-weight:600;
