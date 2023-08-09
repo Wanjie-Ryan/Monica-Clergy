@@ -128,6 +128,17 @@ function Profile (){
 
       }
 
+      const getCookie = Cookies.get('clergyToken')
+    //   console.log(getCookie)
+
+    const handleLogout =()=>{
+
+        Cookies.remove('clergyToken')
+
+        navigate('/login')
+    }
+ 
+
       
 
 
@@ -197,7 +208,7 @@ function Profile (){
                                     )}
                                 </button>
 
-                                <button type='submit'><BiPowerOff className='prof-icon'/> Log Out</button>
+                                <button type='submit' onClick={handleLogout}><BiPowerOff className='prof-icon'/> Log Out</button>
 
                             </div>
 
