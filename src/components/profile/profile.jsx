@@ -1,12 +1,13 @@
 import React, {useState, useEffect} from 'react'
 import './profile.css'
-import Avatar from '../../Assets/DefaultAvatar.png'
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import {AiOutlineEye} from 'react-icons/ai'
 import {BiPowerOff} from 'react-icons/bi'
 import {useNavigate} from 'react-router-dom'
 import axios from 'axios'
 import Cookies from "js-cookie";
-
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Profile (){
 
@@ -43,10 +44,88 @@ function Profile (){
 
       // console.log(LogDetails)
       let image;
+      let id
     
       if (LogDetails) {
         
         image = LogDetails.image;
+        id = LogDetails.id
+      }
+
+      const [name, setName] = useState()
+      const [images, setImages]= useState()
+    //   const [pwd, setPwd] = useState()
+      const [loading, setLoading] = useState(false)
+      const [updateErr, setupdateErr] = useState()
+
+      const handleName = (e)=>{
+
+        setName(e.target.value)
+      }
+
+    //   const handlePwd = (e)=>{
+
+    //     setPwd(e.target.value)
+    //   }
+
+      const handleUpdate = async(e)=>{
+
+        e.preventDefault()
+
+        setLoading(true)
+
+        try{
+
+            const formData = new FormData();
+            formData.append("file", images);
+      
+            formData.append("upload_preset", "nthqh135");
+            const imageData = await axios.post(
+              "https://api.cloudinary.com/v1_1/djgk2k4sw/image/upload",
+              formData
+            );
+
+            // console.log(formData)
+            const token = Cookies.get().clergyToken;
+
+
+            const updateData = {
+                name: name,
+                image: imageData.data.secure_url,
+                
+            };
+
+            const updateUser = await axios.patch(`http://localhost:3005/api/clergy/auth/update/${id}`, updateData,
+                
+                { headers: { Authorization: `Bearer ${token}`}})
+
+            // console.log(updateUser)
+
+            const details={
+
+                id:updateUser.data.updateClergy._id,
+                image:updateUser.data.updateClergy.image,
+                name:updateUser.data.updateClergy.name
+            }
+            
+            localStorage.removeItem('clergyLoginDetails')
+
+            localStorage.setItem('clergyLoginDetails', JSON.stringify(details))
+
+            setLoading(false)
+
+            toast.success('Details have been updated successfully')
+
+
+        }
+
+        catch(err){
+
+            // console.log(err)
+            setupdateErr('Failed to update your details, try again')
+            setLoading(false)
+        }
+
       }
 
       
@@ -68,14 +147,14 @@ function Profile (){
                         
                     </div>
 
-                        <form className="update">
+                        <form className="update" onSubmit= {handleUpdate}>
 
 
                             <div className='pwd update-pwd'>
 
                                 <label className='update-text'>Change Name</label>
 
-                                <input type='text' placeholder='Enter Your Name' className='pwd-input' />
+                                <input type='text' placeholder='Enter Your Name' className='pwd-input' value={name} onChange={handleName} />
 
 
                             </div>
@@ -89,26 +168,40 @@ function Profile (){
                                     id="imageFile"
                                     accept="image/*"
                                     className='pwd-input'
+                                    onChange={(e) => {
+                                        setImages(e.target.files[0]);
+                                      }}
                                 />
                                     
 
                             </div>
 
-                            <div className='pwd update-pwd'>
+                            {/* <div className='pwd update-pwd'>
 
                                 <label className='update-text'>Change Password</label>
-                                <input type='password' placeholder='Password' className='pwd-input' />
+                                <input type='password' placeholder='Password' className='pwd-input' value={pwd} onChange={handlePwd} />
 
                                 <AiOutlineEye className='pwd-icon'/>
-                            </div>
+                            </div> */}
 
                             <div className='update-pwd'>
 
-                                <button type='submit'>Update Details</button>
+                                <button type='submit'>
+
+                                    {loading ? (
+
+                                        <AiOutlineLoading3Quarters className="loading-icon" />
+                                    ) : (
+
+                                        "Update Details"
+                                    )}
+                                </button>
+
                                 <button type='submit'><BiPowerOff className='prof-icon'/> Log Out</button>
 
-                        
                             </div>
+
+                            {updateErr && <p className="error-msg">{updateErr}</p>}
 
                         </form>
 
