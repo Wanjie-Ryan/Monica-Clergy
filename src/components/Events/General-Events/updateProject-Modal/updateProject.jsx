@@ -68,7 +68,7 @@ function UpdateProjectModal({ isOpen, onClose,eventToken, GeId }) {
         config
       );
 
-      console.log(GEventsUpdateData)
+      // console.log(GEventsUpdateData)
 
       toast.success('General Event was uploaded successfully')
 
@@ -79,7 +79,7 @@ function UpdateProjectModal({ isOpen, onClose,eventToken, GeId }) {
 
     catch(err){
 
-      console.log(err)
+      // console.log(err)
       seterrMsg('Failed to update the event')
       setLoading(false)
 

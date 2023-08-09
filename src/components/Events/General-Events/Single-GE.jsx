@@ -9,8 +9,9 @@ import axios from 'axios'
 import {useParams} from 'react-router-dom'
 import { AiOutlineLoading3Quarters} from "react-icons/ai";
 import Cookies from 'js-cookie'
-
-
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import {useNavigate} from 'react-router-dom'
 
 function SingleGE (){
 
@@ -31,11 +32,12 @@ function SingleGE (){
 
     }; 
 
+    const navigate = useNavigate()
     const [Loading, setLoading] = useState(false)
     const [singGe, setSingGe] = useState()
     const [errMsg, seterrMsg] = useState()
     const {id} = useParams()
-    console.log(singGe)
+    // console.log(singGe)
 
     useEffect(()=>{
 
@@ -58,14 +60,11 @@ function SingleGE (){
 
             catch(err){
 
-                console.log(err)
+                // console.log(err)
                 seterrMsg('Cannot fetch Data at this time')
                 setLoading(false)
 
             }
-
-
-
 
         }
 
@@ -74,6 +73,50 @@ function SingleGE (){
 
 
     },[id])
+
+    const [errDelete, seterrDelete] = useState()
+
+    const handleDelete = async()=>{
+
+        try{
+
+            setLoading(true)
+
+            const token = Cookies.get().clergyToken
+
+            const deleteEvent = await axios.delete(`http://localhost:3005/api/clergy/events/deleteevent/${singGe._id}`, {
+
+                headers: {
+                    Authorization: `Bearer ${token}` // Include the token in the request header
+                }
+            });
+    
+            setLoading(false)
+            console.log(deleteEvent)
+            toast.success('General Event deleted successfully')
+
+            setTimeout(()=>{
+
+                navigate('/general-events')
+
+            },1000)
+
+
+        }
+
+        catch(err){
+
+            // console.log(err)
+            seterrDelete('Cannot delete your project at this time, refresh the page')
+            setLoading(false)
+
+        }
+
+
+
+
+
+    }
 
     return(
 
@@ -106,7 +149,7 @@ function SingleGE (){
                                                 
         
                                         <BsPencil className='up-icon--sing-update' title='update' onClick ={()=>openEventModal(singGe._id)}  />
-                                        <RiDeleteBin7Fill className='up-icon--sing' title='delete'/>
+                                        <RiDeleteBin7Fill className='up-icon--sing' title='delete' onClick ={handleDelete}/>
                                         
 
                                     </div>
