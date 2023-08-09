@@ -30,6 +30,12 @@ function UpdateProjectModal({ isOpen, onClose,eventToken, GeId }) {
 
     e.preventDefault()
 
+    if(!title || !image || !description){
+
+      toast.error('Please fill in all the details')
+      return
+    }
+
     const config = {
       headers: {
         Authorization: `Bearer ${eventToken}`,
