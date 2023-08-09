@@ -27,7 +27,7 @@
   border-radius: 10px;
   object-fit: cover;
   box-shadow: 0 4px 8px rgba(105, 61, 86, 0.3);
-  cursor:pointer;
+  cursor: pointer;
 }
 
 .explore {
@@ -106,8 +106,8 @@
   }
 
   .event-title {
-    font-size:20px;
-    font-weight:600;
+    font-size: 20px;
+    font-weight: 600;
     margin-top: 10px;
   }
 
@@ -116,44 +116,35 @@
   }
 }
 
-.current-events-p{
-
-  font-size:25px;
-  font-weight:600;
+.current-events-p {
+  font-size: 25px;
+  font-weight: 600;
 }
 
-.events-desc-p-{
-
-  font-size:19px;
-  font-weight:600;
+.events-desc-p- {
+  font-size: 19px;
+  font-weight: 600;
   color: #693d56;
-  margin-left:5px;
-
+  margin-left: 5px;
 }
 
-.actual-dates{
-
-  font-size:19px;
-  font-weight:600;
+.actual-dates {
+  font-size: 19px;
+  font-weight: 600;
   color: #0d71f0;
-  margin-left:5px;
-  
+  margin-left: 5px;
 }
 
-.reg-dates{
-
-  font-size:19px;
-  font-weight:600;
+.reg-dates {
+  font-size: 19px;
+  font-weight: 600;
   color: red;
-  margin-left:5px;
-
+  margin-left: 5px;
 }
 
-.event-deadline{
-
-  font-size:19px;
-  font-weight:600;
+.event-deadline {
+  font-size: 19px;
+  font-weight: 600;
   color: red;
-  margin-left:5px;
-
+  margin-left: 5px;
 }

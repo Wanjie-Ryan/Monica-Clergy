@@ -8,7 +8,7 @@ import CreateGEModal from "../General-Events/createGE-Modal/createGE";
 import axios from "axios";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import Cookies from "js-cookie";
-import {useNavigate} from 'react-router-dom'
+import { useNavigate } from "react-router-dom";
 
 function GeneralEvents() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -95,7 +95,7 @@ function GeneralEvents() {
     FetchGenEvents();
   }, []);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   useEffect(() => {
     const checkAuth = async () => {
@@ -123,53 +123,42 @@ function GeneralEvents() {
     checkAuth();
   }, [navigate]);
 
-  const [searchEvent, setsearchEvent] = useState()
-  const [searchErr, setsearchErr] = useState()
-  const [searchGen, setsearchGen] = useState([])
-  const [searchmsg, setsearchmsg] = useState()
+  const [searchEvent, setsearchEvent] = useState();
+  const [searchErr, setsearchErr] = useState();
+  const [searchGen, setsearchGen] = useState([]);
+  const [searchmsg, setsearchmsg] = useState();
   // console.log(searchGen)
   // console.log(searchmsg)
 
-  const handleSearch = (e)=>{
+  const handleSearch = (e) => {
+    setsearchEvent(e.target.value);
+  };
 
-    setsearchEvent(e.target.value)
-  }
-
-  const searchFunc = async()=>{
-
-    try{
-
-      setLoading(true)
+  const searchFunc = async () => {
+    try {
+      setLoading(true);
 
       const searchGE = await axios.get(
         `http://localhost:3005/api/clergy/events/searchevent?searchTerm=${searchEvent}`
-        
       );
 
       // console.log(searchGE)
-      setsearchGen(searchGE.data.foundEvents)
-      setsearchmsg(searchGE.data.msg)
+      setsearchGen(searchGE.data.foundEvents);
+      setsearchmsg(searchGE.data.msg);
 
-      setLoading(false)
-
-    }
-
-    catch(err){
-
+      setLoading(false);
+    } catch (err) {
       // console.log(err)
-      setsearchErr('Cannot search for a general event currently')
-      setLoading(false)
+      setsearchErr("Cannot search for a general event currently");
+      setLoading(false);
     }
-  }
+  };
 
   const handleKeyDown = (event) => {
     if (event.key === "Enter") {
       searchFunc();
     }
   };
-
-
-
 
   return (
     <>
@@ -179,7 +168,13 @@ function GeneralEvents() {
 
         <div className="search-add">
           <div className="search">
-            <input type="text" placeholder="search by name of event" value={searchEvent} onChange={handleSearch} onKeyDown={handleKeyDown} />
+            <input
+              type="text"
+              placeholder="search by name of event"
+              value={searchEvent}
+              onChange={handleSearch}
+              onKeyDown={handleKeyDown}
+            />
 
             <BsSearch className="search-icon" onClick={searchFunc} />
           </div>
@@ -190,19 +185,14 @@ function GeneralEvents() {
           </div>
         </div>
 
-        
         <div className="all-events">
           <div className="all-events-container">
-
-
-          {loading ? (
+            {loading ? (
               <AiOutlineLoading3Quarters className="loading-icon" />
             ) : (
               <>
                 {searchGen.length > 0 ? (
                   <div className="upcoming-events">
-
-
                     {searchGen.map((searchevent, index) => (
                       <div className="upcoming-events-container" key={index}>
                         <p className="upcoming-title">Searched Events</p>
@@ -221,7 +211,9 @@ function GeneralEvents() {
                         </div>
                         <p className="event-title">
                           Event Title:{" "}
-                          <span className="events-desc-p-">{searchevent.title}</span>
+                          <span className="events-desc-p-">
+                            {searchevent.title}
+                          </span>
                         </p>
                         <p className="event-title">
                           Event Description:{" "}
@@ -238,14 +230,13 @@ function GeneralEvents() {
                   </div>
                 ) : (
                   <p className="current-events-p">
-                    {searchGen?.length <=0 ? "The event searched for has not been found" : {searchErr}}
+                    {searchGen?.length <= 0
+                      ? "The event searched for has not been found"
+                      : { searchErr }}
                   </p>
                 )}
               </>
             )}
-
-
-
 
             <p className="upcoming-title">Current Events</p>
 
