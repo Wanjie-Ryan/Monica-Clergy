@@ -78,14 +78,14 @@ function SingleGE() {
 
       setLoading(false);
       // console.log(deleteEvent)
-      toast.success("General Event deleted successfully");
+      toast.success("Event deleted successfully");
 
       setTimeout(() => {
         navigate("/general-events");
       }, 1000);
     } catch (err) {
       // console.log(err)
-      seterrDelete("Cannot delete your project at this time, refresh the page");
+      seterrDelete("Cannot delete the Event at this time, refresh the page");
       setLoading(false);
     }
   };
@@ -136,6 +136,10 @@ function SingleGE() {
                 <p className="events-title-single">
                   Event Title:{" "}
                   <span className="events-desc-p-">{singGe.title} </span>
+                </p>
+                <p className="events-title-single">
+                  Event Category:{" "}
+                  <span className="events-desc-p-">{singGe.category} </span>
                 </p>
                 <p className="events-title-single">
                   Event Description:{" "}

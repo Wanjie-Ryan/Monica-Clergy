@@ -265,6 +265,10 @@ function GeneralEvents() {
                           <span className="events-desc-p-">{event.title}</span>
                         </p>
                         <p className="event-title">
+                          Event Category:{" "}
+                          <span className="events-desc-p-">{event.category}</span>
+                        </p>
+                        <p className="event-title">
                           Event Description:{" "}
                           <span className="events-desc-p-">
                             {event.description}
@@ -311,6 +315,10 @@ function GeneralEvents() {
                         <p className="event-title">
                           Event Title:{" "}
                           <span className="events-desc-p-">{event.title}</span>
+                        </p>
+                        <p className="event-title">
+                          Event Category:{" "}
+                          <span className="events-desc-p-">{event.category}</span>
                         </p>
                         <p className="event-title">
                           Event Description:{" "}
@@ -368,6 +376,10 @@ function GeneralEvents() {
                         <p className="event-title">
                           Event Title:{" "}
                           <span className="events-desc-p-">{event.title}</span>
+                        </p>
+                        <p className="event-title">
+                          Event Category:{" "}
+                          <span className="events-desc-p-">{event.category}</span>
                         </p>
                         <p className="event-title">
                           Event Description:{" "}

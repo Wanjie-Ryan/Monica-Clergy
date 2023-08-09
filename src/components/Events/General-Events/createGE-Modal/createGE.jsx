@@ -44,7 +44,7 @@ function CreateProjectModal({ isOpen, onClose }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!title || !image || !acDate || !regDate || !description) {
+    if (!title || !image || !acDate || !regDate || !selectedCategory || !description) {
       toast.error("Please fill in all the field");
       return;
     }
@@ -69,6 +69,7 @@ function CreateProjectModal({ isOpen, onClose }) {
         image: imageData.data.secure_url,
         ActualDate: acDate,
         DeadlineDate: regDate,
+        category:selectedCategory,
         description: description,
       };
 
@@ -80,12 +81,12 @@ function CreateProjectModal({ isOpen, onClose }) {
 
       // console.log(CreateGEdata)
 
-      toast.success("General Event has been created successfully");
+      toast.success("Event has been created successfully");
 
       setLoading(false);
     } catch (err) {
       // console.log(err)
-      setErrMsg("Sorry, could not be able to create the General Event");
+      setErrMsg("Sorry, could not be able to create the Event");
       setLoading(false);
     }
 

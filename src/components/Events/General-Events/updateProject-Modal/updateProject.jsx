@@ -54,6 +54,7 @@ function UpdateProjectModal({ isOpen, onClose, eventToken, GeId }) {
       const GEUpdateData = {
         title: title,
         image: imageData.data.secure_url,
+        category:selectedCategory,
         description: description,
       };
 
@@ -65,7 +66,7 @@ function UpdateProjectModal({ isOpen, onClose, eventToken, GeId }) {
 
       // console.log(GEventsUpdateData)
 
-      toast.success("General Event was uploaded successfully");
+      toast.success("Event was uploaded successfully");
 
       setLoading(false);
     } catch (err) {
