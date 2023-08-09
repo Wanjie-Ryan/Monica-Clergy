@@ -59,7 +59,6 @@ function Events() {
                 </Link>
               </div>
             </div>
-            
           </div>
         </div>
       </section>
