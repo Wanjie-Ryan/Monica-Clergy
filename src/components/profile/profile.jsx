@@ -1,11 +1,54 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import './profile.css'
 import Avatar from '../../Assets/DefaultAvatar.png'
 import {AiOutlineEye} from 'react-icons/ai'
 import {BiPowerOff} from 'react-icons/bi'
+import {useNavigate} from 'react-router-dom'
+import axios from 'axios'
+import Cookies from "js-cookie";
 
 
 function Profile (){
+
+    const navigate = useNavigate()
+
+    useEffect(() => {
+        const checkAuth = async () => {
+          if (
+            !Cookies.get().clergyToken ||
+            Cookies.get().clergyToken === undefined
+          ) {
+            navigate("/login");
+          } else {
+            const token = Cookies.get().clergyToken;
+    
+            const res = await axios({
+              method: "get",
+              url: "http://localhost:3005/api/clergy/auth/verify",
+              headers: { Authorization: "Bearer " + token },
+              data: {},
+            });
+    
+            if (res.data.type !== "success") {
+              navigate("/login");
+            }
+          }
+        };
+    
+        checkAuth();
+      }, [navigate]);
+    
+    
+      const LogDetails = JSON.parse(localStorage.getItem("clergyLoginDetails"));
+
+      // console.log(LogDetails)
+    
+      let image;
+    
+      if (LogDetails) {
+        
+        image = LogDetails.image;
+      }
 
 
     return(
@@ -20,7 +63,7 @@ function Profile (){
 
                     <div className="profile-title">
 
-                        <img src ={Avatar} alt ='avatar' className='logo-profile'/>
+                        <img src ={image} alt ='avatar' className='logo-profile'/>
                         
                     </div>
 
