@@ -99,7 +99,7 @@ function CreateProjectModal({ isOpen, onClose }) {
   return (
     <div className="modal">
       <form className="modal-content" onSubmit={handleSubmit}>
-        <h2>Create General Event</h2>
+        <h2>Create Event</h2>
 
         <div className="modal-input">
           <label htmlFor="title">Title:</label>

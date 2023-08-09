@@ -49,7 +49,7 @@ function Events() {
 
           <div className="actual-projects">
             <div className="project-img">
-              <p className="project-desc-events">General Events</p>
+              {/* <p className="project-desc-events">Events</p> */}
 
               <img src={GE} alt="church" className="img-proj" />
 
@@ -59,61 +59,7 @@ function Events() {
                 </Link>
               </div>
             </div>
-
-            <div className="project-img">
-              <p className="project-desc-events">Events for Men</p>
-              <img src={men} alt="church" className="img-proj" />
-
-              <div className="up-del">
-                <Link to="/men-events" className="links-events">
-                  <p className="see-more-events">See More</p>
-                </Link>
-              </div>
-            </div>
-
-            <div className="project-img">
-              <p className="project-desc-events">Events for Ladies</p>
-              <img src={WE} alt="church" className="img-proj" />
-
-              <div className="up-del">
-                <Link to="/ladies-events" className="links-events">
-                  <p className="see-more-events">See More</p>
-                </Link>
-              </div>
-            </div>
-
-            <div className="project-img">
-              <p className="project-desc-events">Events for Youths</p>
-              <img src={Youths} alt="church" className="img-proj" />
-
-              <div className="up-del">
-                <Link to="/youth-events" className="links-events">
-                  <p className="see-more-events">See More</p>
-                </Link>
-              </div>
-            </div>
-
-            <div className="project-img">
-              <p className="project-desc-events">Events for Teens</p>
-              <img src={churchview} alt="church" className="img-proj" />
-
-              <div className="up-del">
-                <Link to="/teen-events" className="links-events">
-                  <p className="see-more-events">See More</p>
-                </Link>
-              </div>
-            </div>
-
-            <div className="project-img">
-              <p className="project-desc-events">Events for Kids</p>
-              <img src={kids} alt="church" className="img-proj" />
-
-              <div className="up-del">
-                <Link to="/kids-events" className="links-events">
-                  <p className="see-more-events">See More</p>
-                </Link>
-              </div>
-            </div>
+            
           </div>
         </div>
       </section>

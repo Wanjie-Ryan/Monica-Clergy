@@ -75,7 +75,7 @@ function Navbar() {
               </div>
 
               <div className="nav-links-inner remove">
-                <Link to="/events" className="nav-p">
+                <Link to="/general-events" className="nav-p">
                   <p className="nav-p">Events</p>
                 </Link>
               </div>
@@ -139,7 +139,7 @@ function Navbar() {
 
                 <div className="others-aside">
                   <CgEventbrite className="others-icon" />
-                  <Link to="/events" className="link-side" onClick={handleNav}>
+                  <Link to="/general-events" className="link-side" onClick={handleNav}>
                     <p className="others-p">Events</p>
                   </Link>
                 </div>

@@ -84,7 +84,7 @@ function UpdateProjectModal({ isOpen, onClose, eventToken, GeId }) {
   return (
     <div className="modal">
       <div className="modal-content">
-        <h2>Update General Event</h2>
+        <h2>Update Event</h2>
 
         <div className="modal-input">
           <label htmlFor="title">Title:</label>

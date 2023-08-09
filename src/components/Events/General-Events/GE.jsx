@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import "./Ge.css";
-import generalEvents from "../../../Assets/Events/general_events.jpg";
 import { Link } from "react-router-dom";
 import { BsSearch } from "react-icons/bs";
 import { BiAddToQueue } from "react-icons/bi";
@@ -163,7 +162,7 @@ function GeneralEvents() {
   return (
     <>
       <section className="general-events">
-        <p className="gen-title">General Events</p>
+        <p className="gen-title">Events</p>
         {/* <p className='event-desc'>These are events that involve the whole of the church</p> */}
 
         <div className="search-add">
@@ -180,7 +179,7 @@ function GeneralEvents() {
           </div>
 
           <div className="add" onClick={openModal}>
-            <p className="add-p">Create General Event</p>
+            <p className="add-p">Create Event</p>
             <BiAddToQueue className="add-icon" />
           </div>
         </div>
