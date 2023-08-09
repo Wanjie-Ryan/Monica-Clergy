@@ -27,9 +27,9 @@ function GeneralEvents() {
   const [loading, setLoading] = useState(false);
   const [errMsg, seterrMsg] = useState();
 
-  console.log(currentEvents);
-  console.log(upcomingEvents);
-  console.log(pastEvents);
+  // console.log(currentEvents);
+  // console.log(upcomingEvents);
+  // console.log(pastEvents);
 
   function formatCountdown(deadlineDate) {
     const deadline = new Date(deadlineDate);
@@ -123,6 +123,35 @@ function GeneralEvents() {
     checkAuth();
   }, [navigate]);
 
+  const [searchEvent, setsearchEvent] = useState()
+  const [searchErr, setsearchErr] = useState()
+
+  const handleSearch = (e)=>{
+
+    setsearchEvent(e.target.value)
+  }
+
+  const searchFunc = async()=>{
+
+    try{
+
+      setLoading(true)
+      
+
+
+
+    }
+
+    catch(err){
+
+      console.log(err)
+      setsearchErr('Cannot search for a general event currently')
+      setLoading(false)
+    }
+  }
+
+
+
 
   return (
     <>
@@ -132,9 +161,9 @@ function GeneralEvents() {
 
         <div className="search-add">
           <div className="search">
-            <input type="text" placeholder="search by name of event" />
+            <input type="text" placeholder="search by name of event" value={searchEvent} onChange={handleSearch} />
 
-            <BsSearch className="search-icon" />
+            <BsSearch className="search-icon"  />
           </div>
 
           <div className="add" onClick={openModal}>
