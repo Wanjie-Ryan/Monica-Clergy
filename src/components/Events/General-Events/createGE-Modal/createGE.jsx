@@ -27,10 +27,9 @@ function CreateProjectModal({ isOpen, onClose }) {
     setRegDate(e.target.value);
   };
 
-  const handleCategoryChange = (e)=>{
-
-    setSelectedCategory(e.target.value)
-  }
+  const handleCategoryChange = (e) => {
+    setSelectedCategory(e.target.value);
+  };
 
   const currentDate = new Date().toISOString().slice(0, 10);
   // console.log(currentDate)
@@ -44,7 +43,14 @@ function CreateProjectModal({ isOpen, onClose }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!title || !image || !acDate || !regDate || !selectedCategory || !description) {
+    if (
+      !title ||
+      !image ||
+      !acDate ||
+      !regDate ||
+      !selectedCategory ||
+      !description
+    ) {
       toast.error("Please fill in all the field");
       return;
     }
@@ -69,7 +75,7 @@ function CreateProjectModal({ isOpen, onClose }) {
         image: imageData.data.secure_url,
         ActualDate: acDate,
         DeadlineDate: regDate,
-        category:selectedCategory,
+        category: selectedCategory,
         description: description,
       };
 
@@ -154,12 +160,12 @@ function CreateProjectModal({ isOpen, onClose }) {
 
         <div className="modal-input">
           <label htmlFor="eventCategory">Event Category:</label>
-  
-            <select
-              id="eventCategory"
-              value={selectedCategory}
-              onChange={handleCategoryChange}
-            >
+
+          <select
+            id="eventCategory"
+            value={selectedCategory}
+            onChange={handleCategoryChange}
+          >
             <option value="">Select event category</option>
             <option value="kids">Kids</option>
             <option value="youths">Youths</option>
@@ -167,7 +173,6 @@ function CreateProjectModal({ isOpen, onClose }) {
             <option value="ladies">Ladies</option>
             <option value="teens">Teens</option>
           </select>
-
         </div>
 
         <div className="modal-input">
