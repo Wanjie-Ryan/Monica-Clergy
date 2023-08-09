@@ -1,39 +1,30 @@
-import React, { useState } from 'react';
-import axios from 'axios'
+import React, { useState } from "react";
+import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
-
-
-function UpdateProjectModal({ isOpen, onClose,eventToken, GeId }) {
-
-  const [title, setTitle] = useState('');
-  const [image, setImage] = useState()
-  const [description, setDescription] = useState('');
-  const [loading, setLoading]= useState(false)
-  const [errMsg, seterrMsg] = useState()
+function UpdateProjectModal({ isOpen, onClose, eventToken, GeId }) {
+  const [title, setTitle] = useState("");
+  const [image, setImage] = useState();
+  const [description, setDescription] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [errMsg, seterrMsg] = useState();
 
   const handleTitleChange = (e) => {
-
     setTitle(e.target.value);
-
   };
 
   const handleDescriptionChange = (e) => {
-
     setDescription(e.target.value);
-
   };
 
-  const handleSubmit = async(e) => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-    e.preventDefault()
-
-    if(!title || !image || !description){
-
-      toast.error('Please fill in all the details')
-      return
+    if (!title || !image || !description) {
+      toast.error("Please fill in all the details");
+      return;
     }
 
     const config = {
@@ -42,9 +33,8 @@ function UpdateProjectModal({ isOpen, onClose,eventToken, GeId }) {
       },
     };
 
-    try{
-
-      setLoading(true)
+    try {
+      setLoading(true);
 
       const formData = new FormData();
       formData.append("file", image);
@@ -70,42 +60,28 @@ function UpdateProjectModal({ isOpen, onClose,eventToken, GeId }) {
 
       // console.log(GEventsUpdateData)
 
-      toast.success('General Event was uploaded successfully')
+      toast.success("General Event was uploaded successfully");
 
-      setLoading(false)
-
-
-    }
-
-    catch(err){
-
+      setLoading(false);
+    } catch (err) {
       // console.log(err)
-      seterrMsg('Failed to update the event')
-      setLoading(false)
-
+      seterrMsg("Failed to update the event");
+      setLoading(false);
     }
 
-    
     onClose();
-
   };
 
   if (!isOpen) {
-
     return null;
-
   }
 
   return (
-
     <div className="modal">
-
       <div className="modal-content">
-
         <h2>Update General Event</h2>
 
         <div className="modal-input">
-
           <label htmlFor="title">Title:</label>
 
           <input
@@ -115,11 +91,9 @@ function UpdateProjectModal({ isOpen, onClose,eventToken, GeId }) {
             onChange={handleTitleChange}
             placeholder="Enter project title"
           />
-
         </div>
 
         <div className="modal-input">
-
           <label htmlFor="imageFile">Image:</label>
           <input
             type="file"
@@ -129,11 +103,9 @@ function UpdateProjectModal({ isOpen, onClose,eventToken, GeId }) {
               setImage(e.target.files[0]);
             }}
           />
-          
         </div>
 
         <div className="modal-input">
-
           <label htmlFor="description">Description:</label>
           <textarea
             id="description"
@@ -141,21 +113,19 @@ function UpdateProjectModal({ isOpen, onClose,eventToken, GeId }) {
             onChange={handleDescriptionChange}
             placeholder="Enter project description (max-length: 50 words)"
           />
-
         </div>
 
-        <button onClick={handleSubmit}>{loading ? (
+        <button onClick={handleSubmit}>
+          {loading ? (
             <AiOutlineLoading3Quarters className="loading-icon" />
           ) : (
             "Submit"
-          )}</button>
+          )}
+        </button>
         <button onClick={onClose}>Cancel</button>
         {errMsg ? <p className="error-msg">{errMsg}</p> : ""}
-
-
       </div>
     </div>
-
   );
 }
 
