@@ -1,40 +1,31 @@
-.add-events{
-
-    display:flex;
-    flex-direction:row;
-    justify-content:center;
-    cursor:pointer;
-      
+.add-events {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  cursor: pointer;
 }
 
-.project-desc-events{
-
-    color:black;
-    font-weight:bold;
-    text-align:center;
-    font-size:20px;
+.project-desc-events {
+  color: black;
+  font-weight: bold;
+  text-align: center;
+  font-size: 20px;
 }
 
-.links-events{
-
-    text-decoration: none;
+.links-events {
+  text-decoration: none;
 }
 
-.see-more-events{
-
-    background-color: #693d56;
-    color:white;
-    border: none;
-    padding: 5px;
-    border-radius: 3px;
-    cursor: pointer;
-    transition: background-color 0.3s ease-in-out;
-
+.see-more-events {
+  background-color: #693d56;
+  color: white;
+  border: none;
+  padding: 5px;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
 }
 
-.see-more-events:hover{
-
+.see-more-events:hover {
   background-color: #59372c;
-
 }
-
