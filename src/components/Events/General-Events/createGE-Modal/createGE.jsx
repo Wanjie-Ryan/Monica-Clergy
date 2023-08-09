@@ -10,6 +10,7 @@ function CreateProjectModal({ isOpen, onClose }) {
   const [image, setImage] = useState([]);
   const [acDate, setAcDate] = useState();
   const [regDate, setRegDate] = useState();
+  const [selectedCategory, setSelectedCategory] = useState();
   const [description, setDescription] = useState("");
   const [loading, setLoading] = useState(false);
   const [errMsg, setErrMsg] = useState();
@@ -25,6 +26,11 @@ function CreateProjectModal({ isOpen, onClose }) {
   const handleRegDate = (e) => {
     setRegDate(e.target.value);
   };
+
+  const handleCategoryChange = (e)=>{
+
+    setSelectedCategory(e.target.value)
+  }
 
   const currentDate = new Date().toISOString().slice(0, 10);
   // console.log(currentDate)
@@ -143,6 +149,24 @@ function CreateProjectModal({ isOpen, onClose }) {
             min={currentDate}
             placeholder="Enter project title"
           />
+        </div>
+
+        <div className="modal-input">
+          <label htmlFor="eventCategory">Event Category:</label>
+  
+            <select
+              id="eventCategory"
+              value={selectedCategory}
+              onChange={handleCategoryChange}
+            >
+            <option value="">Select event category</option>
+            <option value="kids">Kids</option>
+            <option value="youths">Youths</option>
+            <option value="men">Men</option>
+            <option value="ladies">Ladies</option>
+            <option value="teens">Teens</option>
+          </select>
+
         </div>
 
         <div className="modal-input">

@@ -56,6 +56,71 @@ function MenEvents (){
       const [pastEvents, setPastEvents] = useState([]);
       const [loading, setLoading] = useState(false);
       const [errMsg, seterrMsg] = useState();
+
+      function formatCountdown(deadlineDate) {
+        const deadline = new Date(deadlineDate);
+        const currentTime = new Date();
+        const timeDifference = deadline - currentTime;
+    
+        const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+        const hours = Math.floor(
+          (timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        );
+        const minutes = Math.floor(
+          (timeDifference % (1000 * 60 * 60)) / (1000 * 60)
+        );
+        const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+    
+        return `${days}d ${hours}h ${minutes}m ${seconds}s`;
+      }
+
+      useEffect(() => {
+        const FetchGenEvents = async () => {
+          try {
+            setLoading(true);
+            const FetchedProjects = await axios.get(
+              "http://localhost:3005/api/clergy/events/allevents"
+            );
+            const Loopdates = FetchedProjects.data.AllEvents;
+    
+            // console.log(Loopdates)
+    
+            const currentEventsArr = [];
+            const upcomingEventsArr = [];
+            const pastEventsArr = [];
+            const currentDate = new Date().toISOString().slice(0, 10);
+    
+            Loopdates.forEach((dates) => {
+              const actualDates = dates.ActualDate;
+              const RegDates = dates.DeadlineDate;
+    
+              if (currentDate === actualDates) {
+                currentEventsArr.push(dates);
+              } else if (RegDates < actualDates) {
+                upcomingEventsArr.push(dates);
+              } else if (currentDate > actualDates) {
+                pastEventsArr.push(dates);
+              }
+            });
+    
+            // console.log(actualDates)
+            // console.log(RegDates)
+    
+            setCurrentEvents(currentEventsArr);
+            setUpcomingEvents(upcomingEventsArr);
+            setPastEvents(pastEventsArr);
+    
+            setLoading(false);
+          } catch (err) {
+            // console.log(err);
+            setLoading(false);
+            seterrMsg("Error fetching events.");
+          }
+        };
+    
+        FetchGenEvents();
+      }, []);
+    
     
     
 
