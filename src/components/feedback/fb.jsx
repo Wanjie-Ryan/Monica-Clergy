@@ -12,8 +12,7 @@ import {
   StyleSheet,
   PDFDownloadLink,
 } from "@react-pdf/renderer";
-import {useNavigate}  from 'react-router-dom'
-
+import { useNavigate } from "react-router-dom";
 
 function FeedBack() {
   const [fb, setFb] = useState([]);
@@ -83,7 +82,7 @@ function FeedBack() {
     setLoading(false);
   };
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   useEffect(() => {
     const checkAuth = async () => {
@@ -110,7 +109,6 @@ function FeedBack() {
 
     checkAuth();
   }, [navigate]);
-
 
   return (
     <>
