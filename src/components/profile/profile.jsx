@@ -42,13 +42,14 @@ function Profile (){
       const LogDetails = JSON.parse(localStorage.getItem("clergyLoginDetails"));
 
       // console.log(LogDetails)
-    
       let image;
     
       if (LogDetails) {
         
         image = LogDetails.image;
       }
+
+      
 
 
     return(

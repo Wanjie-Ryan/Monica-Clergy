@@ -18,9 +18,7 @@
     height:60px;
     display:flex;
     justify-content:center;
-    /* background-color:red; */
     background-color: rgba(105, 61, 86, 0.1);
-
     box-shadow: 0 2px 4px rgba(105, 61, 86, 0.7);
 
 }
@@ -28,9 +26,13 @@
 .logo-profile{
 
     width:100px;
-    height:100px;
+    height:90px;
     object-fit: cover;
+    border-radius:50px;
+    box-shadow: 0 2px 4px rgba(105, 61, 86, 0.7);
+
 }
+
 
 .update{
 
