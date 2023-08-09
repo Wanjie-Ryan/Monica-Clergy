@@ -1,18 +1,12 @@
-import React from'react'
-import RegisterPage from '../../components/Register/reg'
+import React from "react";
+import RegisterPage from "../../components/Register/reg";
 
-
-function RegPage (){
-
-    return(
-
-        <>
-
-            <RegisterPage/>
-        
-        
-        </>
-    )
+function RegPage() {
+  return (
+    <>
+      <RegisterPage />
+    </>
+  );
 }
 
-export default RegPage
+export default RegPage;
