@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState, useEffect} from 'react'
 import generalEvents from '../../../Assets/Events/general_events.jpg'
 import {Link} from 'react-router-dom'
 import {BsSearch} from 'react-icons/bs'
@@ -23,6 +23,40 @@ function MenEvents (){
         setIsModalOpen(false);
     };
 
+    const navigate = useNavigate()
+
+    useEffect(() => {
+        const checkAuth = async () => {
+          if (
+            !Cookies.get().clergyToken ||
+            Cookies.get().clergyToken === undefined
+          ) {
+            navigate("/login");
+          } else {
+            const token = Cookies.get().clergyToken;
+    
+            const res = await axios({
+              method: "get",
+              url: "http://localhost:3005/api/clergy/auth/verify",
+              headers: { Authorization: "Bearer " + token },
+              data: {},
+            });
+    
+            if (res.data.type !== "success") {
+              navigate("/login");
+            }
+          }
+        };
+    
+        checkAuth();
+      }, [navigate]);
+
+      const [currentEvents, setCurrentEvents] = useState([]);
+      const [upcomingEvents, setUpcomingEvents] = useState([]);
+      const [pastEvents, setPastEvents] = useState([]);
+      const [loading, setLoading] = useState(false);
+      const [errMsg, seterrMsg] = useState();
+    
     
 
 
