@@ -54,7 +54,7 @@ function Login() {
       // console.log(Login)
 
       const loginDetails = {
-        id:Login.data.clergyLogin._id,
+        id: Login.data.clergyLogin._id,
         name: Login.data.clergyLogin.name,
         image: Login.data.clergyLogin.image,
         email: Login.data.clergyLogin.email,
