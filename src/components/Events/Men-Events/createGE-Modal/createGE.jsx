@@ -175,8 +175,15 @@ function CreateProjectModal({ isOpen, onClose }) {
 
         </div>
 
-        <button onClick={handleSubmit}>Submit</button>
+        <button onClick={handleSubmit}>
+          {loading ? (
+            <AiOutlineLoading3Quarters className="loading-icon" />
+          ) : (
+            "Submit"
+          )}</button>
         <button onClick={onClose}>Cancel</button>
+        {errMsg ? <p className="error-msg">{errMsg}</p> : ""}
+
 
       </div>
     </div>
