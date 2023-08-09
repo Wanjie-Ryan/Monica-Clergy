@@ -1,11 +1,13 @@
 import React,{useState} from 'react'
-// import './Teens.css'
 import generalEvents from '../../../Assets/Events/general_events.jpg'
 import {Link} from 'react-router-dom'
 import {BsSearch} from 'react-icons/bs'
 import {BiAddToQueue} from 'react-icons/bi'
 import CreateMensModal from '../Men-Events/createGE-Modal/createGE'
-
+import axios from "axios";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import Cookies from "js-cookie";
+import { useNavigate } from "react-router-dom";
 
 
 function MenEvents (){
@@ -20,6 +22,8 @@ function MenEvents (){
     const closeModal = () => {
         setIsModalOpen(false);
     };
+
+    
 
 
     return(
