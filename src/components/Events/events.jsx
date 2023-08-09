@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import {Link} from 'react-router-dom'
 import churchview from '../../Assets/homeImages/church_view.jpg'
 import GE from '../../Assets/Events/general_events.jpg'
@@ -7,7 +7,7 @@ import WE from '../../Assets/Events/women_events.jpg'
 import './events.css'
 import Youths from '../../Assets/homeImages/youth.jpg'
 import kids from '../../Assets/homeImages/sunday school.jpg'
-
+import axios from 'axios'
 
 function Events (){
 

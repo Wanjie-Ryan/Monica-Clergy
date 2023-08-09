@@ -92,7 +92,7 @@ function SingleGE (){
             });
     
             setLoading(false)
-            console.log(deleteEvent)
+            // console.log(deleteEvent)
             toast.success('General Event deleted successfully')
 
             setTimeout(()=>{
@@ -149,7 +149,15 @@ function SingleGE (){
                                                 
         
                                         <BsPencil className='up-icon--sing-update' title='update' onClick ={()=>openEventModal(singGe._id)}  />
-                                        <RiDeleteBin7Fill className='up-icon--sing' title='delete' onClick ={handleDelete}/>
+                                        
+                                        {Loading ?(
+
+                                            <AiOutlineLoading3Quarters className="loading-icon" />
+
+                                        ):(
+                                            <RiDeleteBin7Fill className='up-icon--sing' title='delete' onClick ={handleDelete}/>
+                                        )}
+                                        {errDelete && <p className="error-msg">{errDelete}</p>}
                                         
 
                                     </div>
