@@ -16,10 +16,9 @@ function UpdateProjectModal({ isOpen, onClose, eventToken, GeId }) {
     setTitle(e.target.value);
   };
 
-  const handleCategoryChange = (e)=>{
-
-    setSelectedCategory(e.target.value)
-  }
+  const handleCategoryChange = (e) => {
+    setSelectedCategory(e.target.value);
+  };
   const handleDescriptionChange = (e) => {
     setDescription(e.target.value);
   };
@@ -54,7 +53,7 @@ function UpdateProjectModal({ isOpen, onClose, eventToken, GeId }) {
       const GEUpdateData = {
         title: title,
         image: imageData.data.secure_url,
-        category:selectedCategory,
+        category: selectedCategory,
         description: description,
       };
 
@@ -113,12 +112,12 @@ function UpdateProjectModal({ isOpen, onClose, eventToken, GeId }) {
 
         <div className="modal-input">
           <label htmlFor="eventCategory">Event Category:</label>
-  
-            <select
-              id="eventCategory"
-              value={selectedCategory}
-              onChange={handleCategoryChange}
-            >
+
+          <select
+            id="eventCategory"
+            value={selectedCategory}
+            onChange={handleCategoryChange}
+          >
             <option value="">Select event category</option>
             <option value="kids">Kids</option>
             <option value="youths">Youths</option>
@@ -126,7 +125,6 @@ function UpdateProjectModal({ isOpen, onClose, eventToken, GeId }) {
             <option value="ladies">Ladies</option>
             <option value="teens">Teens</option>
           </select>
-
         </div>
 
         <div className="modal-input">
