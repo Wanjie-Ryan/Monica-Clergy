@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-// import '../projects.css'
 import axios from 'axios'
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 
 
-function UpdateProjectModal({ isOpen, onClose,eventToken }) {
+function UpdateProjectModal({ isOpen, onClose,eventToken, GeId }) {
 
   const [title, setTitle] = useState('');
   const [image, setImage] = useState()
@@ -26,7 +28,7 @@ function UpdateProjectModal({ isOpen, onClose,eventToken }) {
 
   const handleSubmit = async(e) => {
 
-    e.preventdefault()
+    e.preventDefault()
 
     const config = {
       headers: {
@@ -55,10 +57,16 @@ function UpdateProjectModal({ isOpen, onClose,eventToken }) {
       };
 
       const GEventsUpdateData = await axios.patch(
-        `http://localhost:3005/api/clergy/events/updateevent/${}`,
+        `http://localhost:3005/api/clergy/events/updateevent/${GeId}`,
         GEUpdateData,
         config
       );
+
+      console.log(GEventsUpdateData)
+
+      toast.success('General Event was uploaded successfully')
+
+      setLoading(false)
 
 
     }
@@ -66,6 +74,8 @@ function UpdateProjectModal({ isOpen, onClose,eventToken }) {
     catch(err){
 
       console.log(err)
+      seterrMsg('Failed to update the event')
+      setLoading(false)
 
     }
 
@@ -128,8 +138,14 @@ function UpdateProjectModal({ isOpen, onClose,eventToken }) {
 
         </div>
 
-        <button onClick={handleSubmit}>Submit</button>
+        <button onClick={handleSubmit}>{loading ? (
+            <AiOutlineLoading3Quarters className="loading-icon" />
+          ) : (
+            "Submit"
+          )}</button>
         <button onClick={onClose}>Cancel</button>
+        {errMsg ? <p className="error-msg">{errMsg}</p> : ""}
+
 
       </div>
     </div>

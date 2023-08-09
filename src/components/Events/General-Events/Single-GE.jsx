@@ -14,9 +14,13 @@ import Cookies from 'js-cookie'
 
 function SingleGE (){
 
+  const [updateGEId, setupdateGEId] = useState(null);
+
     const [EventModalOpen, setEventModalOpen] = useState(false);
 
-    const openEventModal = () => {
+    const openEventModal = (GeID) => {
+
+        setupdateGEId(GeID);
 
         setEventModalOpen(true);
     };
@@ -127,6 +131,8 @@ function SingleGE (){
 
                 isOpen={EventModalOpen}
                 onClose={closeEventModal}
+                GeId={updateGEId}
+
                 
             />
         
