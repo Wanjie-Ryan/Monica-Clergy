@@ -125,6 +125,7 @@ function GeneralEvents() {
 
   const [searchEvent, setsearchEvent] = useState()
   const [searchErr, setsearchErr] = useState()
+  const [searchGen, setsearchGen] = useState([])
 
   const handleSearch = (e)=>{
 
@@ -136,7 +137,16 @@ function GeneralEvents() {
     try{
 
       setLoading(true)
-      
+
+      const searchGE = await axios.get(
+        `http://localhost:3005/api/clergy/events/searchevent?searchTerm=${searchEvent}`
+        
+      );
+
+      console.log(searchGE)
+
+      setLoading(false)
+
 
 
 
