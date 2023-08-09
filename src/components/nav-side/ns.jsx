@@ -139,7 +139,11 @@ function Navbar() {
 
                 <div className="others-aside">
                   <CgEventbrite className="others-icon" />
-                  <Link to="/general-events" className="link-side" onClick={handleNav}>
+                  <Link
+                    to="/general-events"
+                    className="link-side"
+                    onClick={handleNav}
+                  >
                     <p className="others-p">Events</p>
                   </Link>
                 </div>
