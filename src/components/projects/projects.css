@@ -204,6 +204,10 @@
   .projects-container {
     width: 100%;
   }
+  .projects{
+
+    margin-top:70px;
+  }
 }
 
 @media screen and (max-width: 820px) {
