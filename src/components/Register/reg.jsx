@@ -75,7 +75,7 @@ function Register() {
       };
 
       const registerData = await axios.post(
-        "http://localhost:3005/api/clergy/auth/register",
+        "https://monica-server.onrender.com/api/clergy/auth/register",
         submissionData
       );
 

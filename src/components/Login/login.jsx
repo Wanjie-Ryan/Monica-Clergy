@@ -47,7 +47,7 @@ function Login() {
       };
 
       const Login = await axios.post(
-        "http://localhost:3005/api/clergy/auth/login",
+        "https://monica-server.onrender.com/api/clergy/auth/login",
         loginData
       );
 

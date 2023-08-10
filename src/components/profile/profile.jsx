@@ -24,7 +24,7 @@ function Profile() {
 
         const res = await axios({
           method: "get",
-          url: "http://localhost:3005/api/clergy/auth/verify",
+          url: "https://monica-server.onrender.com/api/clergy/auth/verify",
           headers: { Authorization: "Bearer " + token },
           data: {},
         });
@@ -88,7 +88,7 @@ function Profile() {
       };
 
       const updateUser = await axios.patch(
-        `http://localhost:3005/api/clergy/auth/update/${id}`,
+        `https://monica-server.onrender.com/api/clergy/auth/update/${id}`,
         updateData,
 
         { headers: { Authorization: `Bearer ${token}` } }

@@ -54,7 +54,7 @@ function CreateProjectModal({ isOpen, onClose, token }) {
       };
 
       const ProjectSubdata = await axios.post(
-        "http://localhost:3005/api/clergy/projects/createproject",
+        "https://monica-server.onrender.com/api/clergy/projects/createproject",
         projectData,
         config
       );

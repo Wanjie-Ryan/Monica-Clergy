@@ -29,7 +29,7 @@ function FeedBack() {
         const token = Cookies.get().clergyToken;
 
         const Allfeedbacks = await axios.get(
-          "http://localhost:3005/api/user/allfeedbacks",
+          "https://monica-server.onrender.com/api/user/allfeedbacks",
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -96,7 +96,7 @@ function FeedBack() {
 
         const res = await axios({
           method: "get",
-          url: "http://localhost:3005/api/clergy/auth/verify",
+          url: "https://monica-server.onrender.com/api/clergy/auth/verify",
           headers: { Authorization: "Bearer " + token },
           data: {},
         });

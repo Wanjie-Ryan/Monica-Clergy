@@ -57,7 +57,7 @@ function Projects() {
 
         const res = await axios({
           method: "get",
-          url: "http://localhost:3005/api/clergy/auth/verify",
+          url: "https://monica-server.onrender.com/api/clergy/auth/verify",
           headers: { Authorization: "Bearer " + token },
           data: {},
         });
@@ -77,7 +77,7 @@ function Projects() {
         setLoading(true);
 
         const FetchedProjects = await axios.get(
-          "http://localhost:3005/api/clergy/projects/getAllprojects"
+          "https://monica-server.onrender.com/api/clergy/projects/getAllprojects"
         );
 
         // console.log(FetchedProjects.data.AllProjects)
@@ -106,7 +106,7 @@ function Projects() {
       const Deletetoken = Cookies.get().clergyToken;
 
       const deleteProject = await axios.delete(
-        `http://localhost:3005/api/clergy/projects/deleteproject/${projectId}`,
+        `https://monica-server.onrender.com/clergy/projects/deleteproject/${projectId}`,
         {
           headers: {
             Authorization: `Bearer ${Deletetoken}`,
@@ -139,7 +139,7 @@ function Projects() {
       const Searchtoken = Cookies.get().clergyToken;
 
       const searchProject = await axios.get(
-        `http://localhost:3005/api/clergy/projects/searchproject?searchTerm=${searchText}`,
+        `https://monica-server.onrender.com/api/clergy/projects/searchproject?searchTerm=${searchText}`,
         { headers: { Authorization: `Bearer ${Searchtoken}` } }
       );
 

@@ -48,7 +48,7 @@ function UpdateProjectModal({ isOpen, onClose, projectId, token }) {
       };
 
       const UpdateData = await axios.patch(
-        `http://localhost:3005/api/clergy/projects/updateproject/${projectId}`,
+        `https://monica-server.onrender.com/api/clergy/projects/updateproject/${projectId}`,
         projectUpdateData,
         config
       );
