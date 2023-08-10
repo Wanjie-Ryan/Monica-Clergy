@@ -274,8 +274,18 @@
 }
 
 @media screen and (max-width: 768px) {
+  .inner-nav{
+
+    gap:4rem;
+  }
+  .announce-profile{
+
+    width:900px;
+    margin-left: 10px;
+    /* background-color:red; */
+  }
   .nav-main {
-    height: 2.9cm;
+    height: 3cm;
   }
 
   .remove {

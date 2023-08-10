@@ -175,7 +175,7 @@ function Navbar() {
                     onClick={handleNav}
                   >
                     <p className="others-p">Feedbacks</p>
-                  </Link>
+                  </Link> 
                 </div>
 
                 <div className="others-aside">
