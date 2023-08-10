@@ -93,6 +93,7 @@ function Projects() {
         setErrmsg(
           "There was an error while fetching the data, refresh the page and try again"
         );
+        setLoading(false)
       }
     };
 
