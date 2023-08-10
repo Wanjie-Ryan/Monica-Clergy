@@ -16,6 +16,7 @@ import Cookies from "js-cookie";
 import {useNavigate} from 'react-router-dom'
 function Navbar() {
   const [showNav, setshowNav] = useState(false);
+  console.log(showNav)
 
   const handleNav = () => {
     setshowNav(!showNav);
@@ -100,7 +101,7 @@ function Navbar() {
                 </Link>
               </div>
 
-              <BiMenu className="icon-menu" onClick={handleNav} />
+              <BiMenu className="icon-menu"onClick={handleNav} />
 
               <div className="announce-profile">
                 <Link to="/profile" className="nav-p">

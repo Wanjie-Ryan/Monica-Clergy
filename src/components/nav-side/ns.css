@@ -274,10 +274,10 @@
 }
 
 @media screen and (max-width: 768px) {
-  .inner-nav{
+  /* .inner-nav{
 
     gap:8rem;
-  }
+  } */
   .announce-profile{
 
     width:900px;
