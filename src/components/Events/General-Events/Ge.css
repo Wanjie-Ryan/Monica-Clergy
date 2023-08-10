@@ -90,6 +90,10 @@
 }
 
 @media screen and (max-width: 768px) {
+
+  .general-events{
+    margin-top: 40px;
+  }
   .all-events-container {
     width: 100%;
   }

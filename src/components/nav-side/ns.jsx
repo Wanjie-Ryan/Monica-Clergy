@@ -12,7 +12,8 @@ import { GoHome } from "react-icons/go";
 import { CgNotes, CgEventbrite } from "react-icons/cg";
 import { GrProjects } from "react-icons/gr";
 import { FiLogOut } from "react-icons/fi";
-
+import Cookies from "js-cookie";
+import {useNavigate} from 'react-router-dom'
 function Navbar() {
   const [showNav, setshowNav] = useState(false);
 
@@ -47,6 +48,13 @@ function Navbar() {
       setGreeting("Good Evening");
     }
   }, []);
+
+  const navigate = useNavigate()
+  const handleLogout = () => {
+    Cookies.remove("clergyToken");
+
+    navigate("/login");
+  };
 
   return (
     <>
@@ -171,8 +179,8 @@ function Navbar() {
                 </div>
 
                 <div className="others-aside">
-                  <FiLogOut className="others-icon" />
-                  <p className="others-p" onClick={handleNav}>
+                  <FiLogOut className="others-icon" onClick={handleLogout} />
+                  <p className="others-p" onClick={handleNav} >
                     Logout
                   </p>
                 </div>
