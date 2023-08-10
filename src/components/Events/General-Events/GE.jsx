@@ -52,7 +52,7 @@ function GeneralEvents() {
       try {
         setLoading(true);
         const FetchedProjects = await axios.get(
-          "http://localhost:3005/api/clergy/events/allevents"
+          "https://monica-server.onrender.com/api/clergy/events/allevents"
         );
         const Loopdates = FetchedProjects.data.AllEvents;
 
@@ -108,7 +108,7 @@ function GeneralEvents() {
 
         const res = await axios({
           method: "get",
-          url: "http://localhost:3005/api/clergy/auth/verify",
+          url: "https://monica-server.onrender.com/api/clergy/auth/verify",
           headers: { Authorization: "Bearer " + token },
           data: {},
         });
@@ -138,7 +138,7 @@ function GeneralEvents() {
       setLoading(true);
 
       const searchGE = await axios.get(
-        `http://localhost:3005/api/clergy/events/searchevent?searchTerm=${searchEvent}`
+        `https://monica-server.onrender.com/api/clergy/events/searchevent?searchTerm=${searchEvent}`
       );
 
       // console.log(searchGE)

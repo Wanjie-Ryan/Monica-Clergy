@@ -58,7 +58,7 @@ function UpdateProjectModal({ isOpen, onClose, eventToken, GeId }) {
       };
 
       const GEventsUpdateData = await axios.patch(
-        `http://localhost:3005/api/clergy/events/updateevent/${GeId}`,
+        `https://monica-server.onrender.com/api/clergy/events/updateevent/${GeId}`,
         GEUpdateData,
         config
       );

@@ -80,7 +80,7 @@ function CreateProjectModal({ isOpen, onClose }) {
       };
 
       const CreateGEdata = await axios.post(
-        "http://localhost:3005/api/clergy/events/createevent",
+        "https://monica-server.onrender.com/api/clergy/events/createevent",
         GEData,
         { headers: { Authorization: `Bearer ${token}` } }
       );

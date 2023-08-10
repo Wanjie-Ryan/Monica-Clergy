@@ -41,7 +41,7 @@ function SingleGE() {
         setLoading(true);
 
         const singleGeEvent = await axios.get(
-          `http://localhost:3005/api/clergy/events/singleevent/${id}`
+          `https://monica-server.onrender.com/api/clergy/events/singleevent/${id}`
         );
 
         const singleEve = singleGeEvent.data.singleEvent;
@@ -68,7 +68,7 @@ function SingleGE() {
       const token = Cookies.get().clergyToken;
 
       const deleteEvent = await axios.delete(
-        `http://localhost:3005/api/clergy/events/deleteevent/${singGe._id}`,
+        `https://monica-server.onrender.com/api/clergy/events/deleteevent/${singGe._id}`,
         {
           headers: {
             Authorization: `Bearer ${token}`, // Include the token in the request header
@@ -102,7 +102,7 @@ function SingleGE() {
 
         const res = await axios({
           method: "get",
-          url: "http://localhost:3005/api/clergy/auth/verify",
+          url: "https://monica-server.onrender.com/api/clergy/auth/verify",
           headers: { Authorization: "Bearer " + token },
           data: {},
         });
