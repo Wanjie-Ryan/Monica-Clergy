@@ -276,7 +276,7 @@
 @media screen and (max-width: 768px) {
   .inner-nav{
 
-    gap:4rem;
+    gap:8rem;
   }
   .announce-profile{
 
@@ -325,9 +325,11 @@
   }
 
   .icon-menu {
+    /* margin-left:20px; */
     display: block;
-    font-size: 50px;
-    margin-left: 20px;
+    font-size: 100px;
+    /* margin-left: 20px; */
+    
   }
 
   .side {
