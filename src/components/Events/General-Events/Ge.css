@@ -90,8 +90,7 @@
 }
 
 @media screen and (max-width: 768px) {
-
-  .general-events{
+  .general-events {
     margin-top: 70px;
   }
   .all-events-container {
@@ -110,9 +109,21 @@
   }
 
   .event-title {
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 600;
     margin-top: 10px;
+  }
+
+  .events-desc-p- {
+    font-size: 17px;
+  }
+
+  .actual-dates {
+    font-size: 16px;
+  }
+
+  .event-deadline {
+    font-size: 14px;
   }
 
   .upcoming-title {
